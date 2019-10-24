@@ -1,0 +1,5 @@
+msg.payload = msg.payload = {"on": true, 'hex': '8F0000'};
+
+node.log('transcoding...');
+
+return msg;

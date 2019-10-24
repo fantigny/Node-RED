@@ -1,0 +1,7 @@
+var source = flow.get('RAW') + '/' + msg.archiveFile;
+var target = flow.get('RAW') + '/' + msg.targetFile;
+
+msg.payload = '-i ' + source +
+    ' -y -filter:v fps=30000/1001 -c:v libx264 -preset:v medium -profile:v high -crf 20 -bf 0 -g 8 -tune fastdecode -pix_fmt yuvj420p -colorspace bt709 -color_primaries bt709 -color_trc bt709 -c:a aac -b:a 192k -chunk_size 64K ' +
+    target;
+return msg

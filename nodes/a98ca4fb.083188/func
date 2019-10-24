@@ -1,0 +1,20 @@
+const DELAY = 1000;// milliseconds
+
+if (flow.get('motionLightEnabled') !== true) {
+    return [ null, null ];
+}
+
+var onMsg = null;
+var timerMsg = null;
+if (flow.get('anyOn') === false) {
+    // turn on
+    onMsg = msg;
+    // start timer after delay
+    timerMsg = { delay: DELAY };
+    node.log('[Corridor] timer delayed start');
+} else if (flow.get('timerOn') === true) {
+    // reset timer imediatly
+    timerMsg = { delay: 0 };
+}
+
+return [ timerMsg, onMsg ];

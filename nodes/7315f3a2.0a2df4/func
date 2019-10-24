@@ -1,0 +1,19 @@
+const MAX_COUNT = 4;
+
+var lights = flow.get('lights') || {};
+var anyOn = lights.bed === true ||
+    lights.desk === true ||
+    lights.ceiling === true;
+
+var count = flow.get('count') || 0;
+if (anyOn === true) {
+    if (++count >= MAX_COUNT) {
+        count = 0
+    }
+    flow.set('count', count);
+}
+msg.payload.count = count;
+
+node.log('[Fred\'s] toggle count (' + count + ')');
+
+return msg;

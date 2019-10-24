@@ -1,0 +1,3 @@
+msg.payload = { ids: msg.payload, idPseudos: null}
+
+return msg;

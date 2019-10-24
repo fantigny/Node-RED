@@ -1,0 +1,5 @@
+msg.payload = {"on": false};
+
+node.log('transcoding finished.');
+
+return msg;

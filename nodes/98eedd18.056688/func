@@ -1,0 +1,3 @@
+msg.url = global.get('WEBHOOK');
+
+return msg;

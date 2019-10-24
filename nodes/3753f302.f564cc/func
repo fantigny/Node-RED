@@ -1,0 +1,23 @@
+const UNKNOWN = 'Unknown';
+
+var pseudos = [];
+var oneUnknown = false;
+var persons = msg.payload.body.homes[0].persons;
+for(var i=0; i<persons.length; i++) {
+    var person = persons[i];
+    if (person.out_of_sight === true) {
+        continue;
+    }
+    if (person.pseudo !== undefined) {
+        pseudos.push(person.pseudo);
+    } else if (oneUnknown === false) {
+        oneUnknown = true;
+        pseudos.push(UNKNOWN);
+    }
+}
+
+msg.payload = pseudos;
+
+node.log('[Welcome] ' + pseudos + ' at home');
+
+return msg;

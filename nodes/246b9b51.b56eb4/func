@@ -1,0 +1,9 @@
+var ids = [];
+var persons = msg.payload.persons;
+for(var i=0; i<persons.length; i++) {
+    ids.push(persons[i].id);
+}
+
+msg.payload = ids;
+
+return msg;

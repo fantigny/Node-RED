@@ -1,0 +1,8 @@
+msg.headers = {
+    authorization: 'Bearer ' +
+        flow.get('access_token')
+};
+msg.home_id = flow.get('homeId');
+msg.payload = { size: 0 };
+
+return msg;

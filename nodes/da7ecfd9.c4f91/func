@@ -1,0 +1,5 @@
+var pushType = msg.payload.push_type;
+var eventType = msg.payload.event_type;
+
+node.log('[Welcome event] ' + pushType +
+    (eventType !== undefined? ', ' + eventType: ''));

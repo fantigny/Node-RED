@@ -1,0 +1,21 @@
+const UNKNOWN = 'Unknown face';
+
+var pseudos = [];
+var ids = msg.payload.ids;
+var idPseudos = msg.payload.idPseudos;
+for(i=0; i<ids.length; i++) {
+    var pseudo = idPseudos[ids[i]];
+    if (pseudo !== undefined) {
+        pseudos.push(pseudo);
+    }
+}
+
+if (pseudos.length === 0) {
+    pseudos.push(UNKNOWN);
+}
+
+msg.payload = pseudos;
+
+node.log('[Welcome] ' + pseudos + ' seen');
+
+return msg;

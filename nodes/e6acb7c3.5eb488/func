@@ -1,0 +1,12 @@
+var idPseudos = {};
+var persons = msg.payload.body.homes[0].persons;
+for(var i=0; i<persons.length; i++) {
+    var pseudo = persons[i].pseudo;
+    if (pseudo !== undefined) {
+        idPseudos[persons[i].id] = pseudo;
+    }
+}
+
+msg.payload = idPseudos;
+
+return msg;

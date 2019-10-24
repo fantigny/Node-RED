@@ -1,0 +1,7 @@
+flow.set('motionLightEnabled', true)
+
+msg.payload = 'on';
+
+node.log('[Welcome] light on motion enabled')
+
+return msg;

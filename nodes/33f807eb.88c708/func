@@ -1,0 +1,33 @@
+const MAX_ATTEMPT = 3;
+
+var attempt = flow.get('attempt') || 0;
+flow.set('attempt', ++attempt);
+if (attempt > MAX_ATTEMPT) {
+    flow.set('attempt', 0);
+    node.log('[Welcome] failed to authenticate');
+    return null;
+}
+
+var oauth2Request = { 
+    'access_token_url': 'https://api.netatmo.com/oauth2/token', 
+    'credentials': {
+        'client_id': global.get('CLIENT_ID'),
+        'client_secret': global.get('CLIENT_SECRET'),
+        'scope': 'read_camera write_camera access_camera',
+    }
+};
+var refresh_token = flow.get('refresh_token') || '';
+if (refresh_token.length > 0) {
+    oauth2Request.credentials.grant_type = 'refresh_token';
+    oauth2Request.credentials.refresh_token= refresh_token;
+    node.log('[Welcome] refresh token');
+} else {
+    oauth2Request.credentials.grant_type = 'password';
+    oauth2Request.credentials.username= global.get('USERNAME');
+    oauth2Request.credentials.password= global.get('PASSWORD');
+    node.log('[Welcome] create token');
+}
+
+msg.oauth2Request = oauth2Request;
+
+return msg;

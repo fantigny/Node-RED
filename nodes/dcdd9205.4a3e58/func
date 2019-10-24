@@ -1,0 +1,2 @@
+node.log('[Welcome] sun event new scene: ' +
+    msg.payload.name);

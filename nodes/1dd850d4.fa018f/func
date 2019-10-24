@@ -1,0 +1,5 @@
+var source = flow.get('TO_PROCESS') + '/' + msg.sourceFile;
+var target = flow.get('RAW') + '/' + msg.archiveFile;
+
+msg.payload = source + ' ' + target;
+return msg

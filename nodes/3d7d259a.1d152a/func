@@ -1,0 +1,7 @@
+var lights = flow.get('lights') || {};
+var anyOn = lights.living === true ||
+    lights.dining === true;
+    
+msg.payload = { on: !anyOn };
+
+return msg;

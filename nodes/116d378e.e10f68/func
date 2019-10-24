@@ -1,0 +1,3 @@
+node.log('error code ' + msg.rc.code);
+
+return msg;

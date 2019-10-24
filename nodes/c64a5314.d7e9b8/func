@@ -1,0 +1,10 @@
+msg.headers = {
+    authorization: 'Bearer ' +
+        flow.get('access_token')
+};
+msg.payload = {
+    url: global.get('WEBHOOK'),
+    app_type: 'app_camera'
+};
+
+return msg;

@@ -1,0 +1,23 @@
+var pseudos = msg.payload;
+
+var payload = '';
+if (pseudos.length === 0) {
+    payload = 'nobody\'s home';
+} else {
+    for(i=0; i<pseudos.length; i++) {
+        if (payload !== '') {
+            if (i === pseudos.length-1) {
+                payload += ' and ';
+            } else {
+                payload += ', ';
+            }
+        }
+        payload += pseudos[i];
+    }
+    payload += (pseudos.length === 1?' is': ' are') +
+        ' home';
+}
+
+msg.payload = payload;
+
+return msg;

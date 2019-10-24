@@ -1,0 +1,6 @@
+<style>
+body {
+    -moz-transform: scale(1.17);
+    zoom: 117%;
+}
+</style>

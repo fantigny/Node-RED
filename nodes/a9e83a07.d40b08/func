@@ -1,0 +1,7 @@
+node.log('[Fred\'s] ' +
+    msg.payload.name +
+    ': ' +
+    msg.payload.action +
+    ' (' +
+    msg.payload.button +
+    ')');

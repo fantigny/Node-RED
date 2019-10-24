@@ -1,0 +1,8 @@
+var datetime = new Date().toISOString().replace(/:/ig, '-');
+var filename = msg.payload.replace(/ /ig, '\\ ');
+
+msg.sourceFile = filename;
+msg.archiveFile = datetime + '-' + msg.sourceFile;
+msg.targetFile = msg.sourceFile + flow.get('TRANS_EXT');
+
+return msg

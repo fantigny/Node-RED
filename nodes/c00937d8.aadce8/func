@@ -1,0 +1,5 @@
+msg.payload = { on: true };
+
+node.log('[Corridor] motion turn on');
+
+return msg;

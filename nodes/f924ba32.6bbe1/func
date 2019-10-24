@@ -1,0 +1,5 @@
+msg.to = global.get('ADMIN_EMAIL');
+msg.topic = '[webhook] error';
+msg.body = msg.payload;
+
+return msg;

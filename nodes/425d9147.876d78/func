@@ -1,0 +1,5 @@
+var source = flow.get('SOURCE') + '/*';
+var target = flow.get('TO_PROCESS');
+
+msg.payload = source + ' ' + target;
+return msg;
