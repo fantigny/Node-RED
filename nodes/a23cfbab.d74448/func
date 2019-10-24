@@ -1,25 +1,17 @@
 const PIPE_RATE = 30 * 1000;//milliseconds
-const OFF = '(disabled)';
-const ON = '';
+const DISABLED = '(disabled)';
 
 var pipeCount = msg.delay / PIPE_RATE;
 var timer = msg.payload;
 
-var enabled = context.get('enabled');
-if (timer === 'on' ||
-        timer === 'off') {
-    enabled = timer === 'on';
-    context.set('enabled', enabled);
-}
-
 var payloads = [];
 payloads.push({ reset: true });
 
-if (timer === 'on' ||
-        timer === 'off' ||
-        timer === 'stop') {
-    payloads.push({
-        payload: enabled === true? ON: OFF });
+if (timer === 'stop' ||
+        timer === 'on' ||
+        timer === 'off') {
+    var enabled = flow.get('enabled');
+    payloads.push({ payload: enabled === true? '': DISABLED });
 } else { // timer === 'start'
     for(var i=pipeCount; i>=0; i--) {
         payloads.push({ payload: '|'.repeat(i) });

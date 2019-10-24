@@ -1,13 +1,15 @@
-// only stop timer if a light is switched off
 var current = msg.payload;
-var previous = flow.get('previous') || {};
-if (previous.on === current.on &&
-        previous.allOn === current.allOn &&
-        previous.anyOn === current.anyOn) {
-    return null;
+if (current !== "off") {
+    // only stop timer if a light is switched off
+    var previous = flow.get('previous') || {};
+    if (previous.on === current.on &&
+            previous.allOn === current.allOn &&
+            previous.anyOn === current.anyOn) {
+        return null;
+    }
+    flow.set('previous', current);
+    flow.set('anyOn', current.anyOn);
 }
-flow.set('previous', current);
-flow.set('anyOn', current.anyOn);
 
 if (flow.get('timerOn') === false) {
     return null;
