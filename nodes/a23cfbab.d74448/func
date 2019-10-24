@@ -7,15 +7,13 @@ var timer = msg.payload;
 var payloads = [];
 payloads.push({ reset: true });
 
-if (timer === 'stop' ||
-        timer === 'on' ||
-        timer === 'off') {
-    var enabled = flow.get('enabled');
-    payloads.push({ payload: enabled === true? '': DISABLED });
-} else { // timer === 'start'
+if (timer === 'start') {
     for(var i=pipeCount; i>=0; i--) {
         payloads.push({ payload: '|'.repeat(i) });
     }
+} else { // timer === 'stop', 'on', 'off'
+    var enabled = flow.get('enabled');
+    payloads.push({ payload: enabled === true? '': DISABLED });
 }
 
 return [ payloads ];

@@ -211,11 +211,13 @@ module.exports = {
         // os:require('os'),
         // jfive:require("johnny-five"),
         // j5board:require("johnny-five").Board({repl:false})
-	'CLIENT_ID': '5d9d04112161300e4f2bc20e',
-	'CLIENT_SECRET': 'eg0GVag2eRZPihSsJ9xZxSiUAuWUALVJl2zi5X6rk',
+	'CLIENT_ID': '5db200ca41a11304456c00fa',
+	'CLIENT_SECRET': 'PL5hrRoOzcLBDfzCbrAZwYLnoZCpYM',
+	'BACKUP_CLIENT_ID': '5d9d04112161300e4f2bc20e',
+	'BACKUP_CLIENT_SECRET': 'eg0GVag2eRZPihSsJ9xZxSiUAuWUALVJl2zi5X6rk',
 	'USERNAME': 'frederic.antigny@gmail.com',
 	'PASSWORD': 'fAnO-1718',
-	'WEBHOOK': 'http://speederpan.uk.to/red/welcome',
+	'WEBHOOK': 'http://speederpan.uk.to/welcome',
 	'ADMIN_EMAIL':'frederic.antigny@gmail.com'
     },
 

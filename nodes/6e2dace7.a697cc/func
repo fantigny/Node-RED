@@ -1,0 +1,3 @@
+node.log('[Home] toggle living');
+
+return msg;

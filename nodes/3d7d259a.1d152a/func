@@ -1,7 +1,10 @@
 var lights = flow.get('lights') || {};
 var anyOn = lights.living === true ||
     lights.dining === true;
-    
-msg.payload = { on: !anyOn };
+
+var on = !anyOn;
+msg.payload = { on: on };
+
+node.log('[Home] turn ' + (on? 'on': 'off') + ' ground floor');
 
 return msg;

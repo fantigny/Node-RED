@@ -2,7 +2,10 @@ var lights = flow.get('lights') || {};
 var anyOn = lights.second === true ||
     lights.first === true ||
     lights.ground === true;
-    
-msg.payload = { on: !anyOn };
+ 
+var on = !anyOn;
+msg.payload = { on: on };
+
+node.log('[Home] turn ' + (on? 'on': 'off') + ' corridor');
 
 return msg;

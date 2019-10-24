@@ -1,5 +1,7 @@
 var current = msg.payload;
-if (current !== "off") {
+if (current === "on" || current === "off") {
+    node.log('[Corridor] timer ' + current);
+} else {
     // only stop timer if a light is switched off
     var previous = flow.get('previous') || {};
     if (previous.on === current.on &&

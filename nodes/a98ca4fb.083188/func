@@ -1,6 +1,6 @@
 const DELAY = 1000;// milliseconds
 
-if (flow.get('motionLightEnabled') !== true) {
+if (flow.get('timerEnabled') === false) {
     return [ null, null ];
 }
 
