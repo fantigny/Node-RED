@@ -1,9 +1,9 @@
-var pseudos = msg.payload;
-
 var text = '';
+var pseudos = msg.payload;
 if (pseudos.length === 0) {
-    text = 'nobody\'s home';
+    text = 'nobody\'s';
 } else {
+    pseudos.sort();
     for(i=0; i<pseudos.length; i++) {
         if (text !== '') {
             if (i === pseudos.length-1) {
@@ -14,10 +14,10 @@ if (pseudos.length === 0) {
         }
         text += pseudos[i];
     }
-    text = ' ' + 
-        (pseudos.length === 1?'is': 'are') +
-        ' home';
+    text += ' ';
+    text += pseudos.length === 1?'is': 'are';
 }
+text += ' home';
 
 msg.payload = text;
 
