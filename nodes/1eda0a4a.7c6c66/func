@@ -5,19 +5,20 @@ var eventMsg = msg;
 eventMsg.delay = DELAY;
 eventMsg.payload = 'start';
 
-var timerMsg = [];
+var timerMsgs = [];
 if (flow.get('timerOn') === true) {
-    timerMsg.push({ reset: true });
+    timerMsgs.push({ reset: true });
     node.log('[Corridor] timer reset')
 } else {
     flow.set('timerOn', true);
 }
 
-timerMsg.push({
+timerMsgs.push({
     delay: DELAY,
     payload: { on: false }
 });
 
-node.log('[Corridor] turn off in ' + TIMER + 'min')
+node.log('[Corridor] turn off in ' +
+    TIMER + ' min (timer)')
 
-return [ eventMsg, timerMsg ];
+return [ eventMsg, timerMsgs ];

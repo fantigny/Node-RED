@@ -1,6 +1,0 @@
-var lights = flow.get('lights') || {};
-
-lights.ceiling = msg.payload.on;
-
-flow.set('lights', lights);
-

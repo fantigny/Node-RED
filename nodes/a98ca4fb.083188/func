@@ -1,6 +1,6 @@
-const DELAY = 1000;// milliseconds
+const DELAY = 2000;// milliseconds
 
-if (flow.get('timerEnabled') === false) {
+if (flow.get('enabled') === false) {
     return [ null, null ];
 }
 
@@ -11,8 +11,9 @@ if (flow.get('anyOn') === false) {
     onMsg = msg;
     // start timer after delay
     timerMsg = { delay: DELAY };
-    node.log('[Corridor] timer delayed start');
-} else if (flow.get('timerOn') === true) {
+    node.log('[Corridor] delay timer (' +
+        DELAY/1000 + 's)');
+} else {
     // reset timer imediatly
     timerMsg = { delay: 0 };
 }

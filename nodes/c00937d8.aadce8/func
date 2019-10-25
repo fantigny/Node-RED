@@ -1,5 +1,5 @@
 msg.payload = { on: true };
 
-node.log('[Corridor] auto turn on');
+node.log('[Corridor] turn on (timer)');
 
 return msg;

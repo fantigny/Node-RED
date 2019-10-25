@@ -1,3 +1,3 @@
-node.log('[Home] activate seen ' + msg.payload);
+node.log('[Home] activate scene ' + msg.payload);
 
 return msg;

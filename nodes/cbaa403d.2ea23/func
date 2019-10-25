@@ -1,0 +1,8 @@
+var on = flow.get('enabled') === false;
+
+msg.payload = { on: on };
+
+node.log('[Corridor] motion timer turned ' +
+    (on === true? 'on': 'off'));
+
+return msg;

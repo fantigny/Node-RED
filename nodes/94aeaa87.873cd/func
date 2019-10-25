@@ -4,5 +4,6 @@ msg.headers = {
 };
 msg.home_id = flow.get('homeId');
 msg.payload = { size: 0 };
+msg.url = 'https://api.netatmo.net/api/gethomedata';
 
 return msg;

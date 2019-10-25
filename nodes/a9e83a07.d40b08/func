@@ -1,4 +1,4 @@
-node.log('[Fred\'s] ' +
+node.log('[Ground floor] ' +
     msg.payload.name +
     ': ' +
     msg.payload.action +

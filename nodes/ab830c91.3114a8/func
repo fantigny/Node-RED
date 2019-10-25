@@ -1,0 +1,5 @@
+node.log('[Home] switch ' +
+    (msg.payload.on === true? "on": "off") +
+    ' timer');
+
+return msg;

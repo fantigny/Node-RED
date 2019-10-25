@@ -1,5 +1,5 @@
-var lights = flow.get('lights') || {};
+var lightsOn = flow.get('lightsOn') || {};
 
-lights.bed = msg.payload.on;
+lightsOn[msg.info.name] = msg.payload.on;
 
-flow.set('lights', lights);
+flow.set('lightsOn', lightsOn);

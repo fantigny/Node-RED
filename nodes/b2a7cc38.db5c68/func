@@ -2,6 +2,6 @@ const BRIGHTNESS_STEP = 10;
 
 msg.payload = BRIGHTNESS_STEP;
 
-node.log('[Fred\'s] increasing brightness');
+node.log('[Ground floor] increasing brightness');
 
 return msg;

@@ -4,16 +4,19 @@ const DISABLED = '(disabled)';
 var pipeCount = msg.delay / PIPE_RATE;
 var timer = msg.payload;
 
-var payloads = [];
-payloads.push({ reset: true });
+var msgs = [];
+msgs.push({ reset: true });
 
 if (timer === 'start') {
     for(var i=pipeCount; i>=0; i--) {
-        payloads.push({ payload: '|'.repeat(i) });
+        msgs.push({ payload: '|'.repeat(i) });
     }
 } else { // timer === 'stop', 'on', 'off'
-    var enabled = flow.get('enabled');
-    payloads.push({ payload: enabled === true? '': DISABLED });
+    var message = '';
+    if (flow.get('enabled') === false) {
+        message = DISABLED;
+    }
+    msgs.push({ payload: message });
 }
 
-return [ payloads ];
+return [ msgs ];

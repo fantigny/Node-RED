@@ -1,19 +1,11 @@
-var current = msg.payload;
-if (current === "on" || current === "off") {
-    node.log('[Corridor] timer ' + current);
-} else {
-    // only stop timer if a light is switched off
-    var previous = flow.get('previous') || {};
-    if (previous.on === current.on &&
-            previous.allOn === current.allOn &&
-            previous.anyOn === current.anyOn) {
-        return null;
-    }
-    flow.set('previous', current);
-    flow.set('anyOn', current.anyOn);
+if (flow.get('timerOn') === false) {
+    return null;
 }
 
-if (flow.get('timerOn') === false) {
+var anyOn = msg.payload.on === true ||
+    msg.payload.anyOn === true;
+flow.set('anyOn', anyOn);
+if (anyOn) {
     return null;
 }
 

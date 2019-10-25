@@ -1,16 +1,15 @@
 const BRIGHTNESS_PAYLOAD = { payload: {
     incrementBrightness: msg.payload,
-    transitionTime: 1
+    transitionTime: 1.2
 }};
 
-var lights = flow.get('lights') || {};
-var outputMsgs = [null, null, null];
-
-if (lights.living === true) {
-    outputMsgs[0] = BRIGHTNESS_PAYLOAD;
+var msgs = [null, null];
+var lightsOn = flow.get('lightsOn') || {};
+if (lightsOn['Living room'] === true) {
+    msgs[0] = BRIGHTNESS_PAYLOAD;
 }
-if (lights.dining === true) {
-    outputMsgs[1] = BRIGHTNESS_PAYLOAD;
+if (lightsOn['Dinning 1'] === true) {
+    msgs[1] = BRIGHTNESS_PAYLOAD;
 }
 
-return outputMsgs;
+return msgs;
