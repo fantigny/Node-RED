@@ -1,0 +1,28 @@
+const scenes = [
+    'ML Bright'];
+
+var count = context.get('count');
+if (count === undefined) {
+    count = 0;
+}
+
+var scene = flow.get('scene');
+if (flow.get('anyOn') === true) {
+    for(var i=0; i<scenes.length; i++) {
+        if (scenes[i] === scene) {
+            if (++count >= scenes.length) {
+                count = 0;
+            }
+            break;
+        }
+    }
+}
+
+scene = scenes[count];
+context.set('count', count);
+flow.set('scene', scene);
+msg.payload = scene;
+
+node.log('[Mei Lin\'s] set scene #' + count + ' ' + scene);
+
+return msg;

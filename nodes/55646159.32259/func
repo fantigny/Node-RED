@@ -3,13 +3,12 @@ const BRIGHTNESS_PAYLOAD = { payload: {
     transitionTime: 1.1
 }};
 
-var lightsOn = flow.get('lightsOn') || {};
 var msgs = [null, null, null];
-
+var lightsOn = flow.get('lightsOn') || {};
 if (lightsOn['Bed'] === true) {
     msgs[0] = BRIGHTNESS_PAYLOAD;
 }
-if (lightsOn['Desk'] === true) {
+if (lightsOn['Piano'] === true) {
     msgs[1] = BRIGHTNESS_PAYLOAD;
 }
 if (lightsOn['Ceiling'] === true) {

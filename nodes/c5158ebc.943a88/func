@@ -1,9 +1,0 @@
-var lightsOn = context.get('lightsOn') || {};
-lightsOn[msg.info.name] = msg.payload.on;
-context.set('lightsOn', lightsOn);
-
-var anyOn = false;
-for(var name in lightsOn) {
-    anyOn = anyOn || lightsOn[name];
-}
-flow.set('anyOn', anyOn);
