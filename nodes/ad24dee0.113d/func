@@ -1,5 +1,5 @@
 msg.payload.on = false;
 
-node.log('[Ground floor] switch off');
+node.log('[Ground floor] turn off');
 
 return msg;

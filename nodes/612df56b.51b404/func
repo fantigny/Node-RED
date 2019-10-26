@@ -1,0 +1,21 @@
+const scenes = [
+    'Dining + Living',
+    'Dining room',
+    'Living room'];
+
+var count = context.get('count');
+if (count === undefined) {
+    count = 0;
+}
+if (flow.get('anyOn') === true) {
+    if (++count >= scenes.length) {
+        count = 0;
+    }
+}
+
+context.set('count', count);
+msg.payload = scenes[count];
+
+node.log('[Ground floor] set scene #' + count + ' ' + scenes[count]);
+
+return msg;

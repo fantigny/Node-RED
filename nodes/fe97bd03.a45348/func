@@ -1,0 +1,25 @@
+const scenes = [
+    'Area 51',
+    'Desert',
+    'Vintage',
+    'ML Savanna sunset',
+    'ML Tropical twilight',
+    'ML Arctic aurora',
+    'ML Spring blossom'];
+
+var count = context.get('count');
+if (count === undefined) {
+    count = 0;
+}
+if (flow.get('anyOn') === true) {
+    if (++count >= scenes.length) {
+        count = 0;
+    }
+}
+
+context.set('count', count);
+msg.payload = scenes[count];
+
+node.log('[Mei Lin\'s] set scene #' + count + ' ' + scenes[count]);
+
+return msg;

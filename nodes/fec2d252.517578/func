@@ -1,0 +1,9 @@
+var lightsOn = flow.get('lightsOn') || {};
+lightsOn[msg.info.name] = msg.payload.on;
+flow.set('lightsOn', lightsOn);
+
+var anyOn = false;
+for(var name in lightsOn) {
+    anyOn = anyOn || lightsOn[name];
+}
+flow.set('anyOn', anyOn);

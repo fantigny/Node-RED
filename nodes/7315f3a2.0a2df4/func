@@ -1,19 +1,22 @@
-const MAX_COUNT = 4;
+const scenes = [
+    'Savanna sunset',
+    'Tropical twilight',
+    'Ants night',
+    'Ants feeding'];
 
-var lights = flow.get('lights') || {};
-var anyOn = lights.bed === true ||
-    lights.desk === true ||
-    lights.ceiling === true;
-
-var count = flow.get('count') || 0;
-if (anyOn === true) {
-    if (++count >= MAX_COUNT) {
-        count = 0
-    }
-    flow.set('count', count);
+var count = context.get('count');
+if (count === undefined) {
+    count = 0;
 }
-msg.payload.count = count;
+if (flow.get('anyOn') === true) {
+    if (++count >= scenes.length) {
+        count = 0;
+    }
+}
 
-node.log('[Fred\'s] toggle count (' + count + ')');
+context.set('count', count);
+msg.payload = scenes[count];
+
+node.log('[Fred\'s] set scene #' + count + ' ' + scenes[count]);
 
 return msg;

@@ -8,7 +8,7 @@ var lightsOn = flow.get('lightsOn') || {};
 if (lightsOn['Living room'] === true) {
     msgs[0] = BRIGHTNESS_PAYLOAD;
 }
-if (lightsOn['Dinning 1'] === true) {
+if (lightsOn['Dining 1'] === true) {
     msgs[1] = BRIGHTNESS_PAYLOAD;
 }
 

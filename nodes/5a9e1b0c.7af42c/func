@@ -1,0 +1,5 @@
+msg.payload.on = false;
+
+node.log('[Mei Lin\'s] turn off');
+
+return msg;

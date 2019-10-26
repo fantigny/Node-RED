@@ -1,6 +1,0 @@
-var lightsOn = flow.get('lightsOn') || {};
-
-lightsOn[msg.info.name] = msg.payload.on;
-
-flow.set('lightsOn', lightsOn);
-

@@ -1,5 +1,5 @@
 msg.payload.on = false;
 
-node.log('[Fred\'s] switch off');
+node.log('[Fred\'s] turn off');
 
 return msg;
