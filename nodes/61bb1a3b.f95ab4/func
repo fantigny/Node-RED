@@ -1,0 +1,16 @@
+var background = context.get('background') || 'grey';
+
+var scene;
+if (background === 'grey') {
+    background = 'lightgrey';
+    scene = 'Dining + Living';
+} else {
+    background = 'grey';
+    scene = 'GF Soft';
+}
+flow.set('scene', scene);
+context.set('background', background);
+
+msg.background = background;
+
+return msg;
