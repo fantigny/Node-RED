@@ -1,7 +1,8 @@
 const scenes = [
     'Dining + Living',
     'Dining room',
-    'Living room'];
+    'Living room'
+];
 
 var count = context.get('count');
 if (count === undefined) {
@@ -25,6 +26,6 @@ context.set('count', count);
 flow.set('scene', scene);
 msg.payload = scene;
 
-node.log('[Ground floor] set scene #' + count + ' ' + scene);
+node.log('[Ground floor] set scene ' + scene);
 
 return msg;

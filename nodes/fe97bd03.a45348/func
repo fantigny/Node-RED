@@ -5,7 +5,8 @@ const scenes = [
     'ML Savanna sunset',
     'ML Tropical twilight',
     'ML Arctic aurora',
-    'ML Spring blossom'];
+    'ML Spring blossom'
+];
 
 var count = context.get('count');
 if (count === undefined) {
@@ -29,6 +30,6 @@ context.set('count', count);
 flow.set('scene', scene);
 msg.payload = scene;
 
-node.log('[Mei Lin\'s] set scene #' + count + ' ' + scene);
+node.log('[Mei Lin\'s] set scene ' + scene);
 
 return msg;

@@ -1,3 +1,8 @@
-node.log('[Home] toggle dining');
+var anyOn = flow.get('gfAnyOn') === true;
+var on = !anyOn;
+
+msg.payload = { on: on };
+
+node.log('[Home] turn ' + (on? 'on': 'of') + ' g/f');
 
 return msg;

@@ -1,0 +1,30 @@
+var pushType = msg.payload.push_type;
+var eventType = msg.payload.event_type;
+
+if (pushType === 'NACamera-movement' &&
+        eventType === 'movement') {
+    return;
+}
+if (pushType === 'NACamera-person' &&
+        eventType === 'person') {
+    return;
+}
+if (eventType === undefined) {
+    if (pushType === 'topology_changed') {
+        return;
+    }
+    if (pushType === 'webhook_activation') {
+        return;
+    }
+    if (pushType === 'webhook_check') {
+        return;
+    }
+}
+
+var payload = JSON.stringify(msg.payload, null, '\t');
+
+msg.payload = payload;
+
+node.log(payload);
+
+return msg;

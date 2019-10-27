@@ -1,7 +1,8 @@
 const scenes = [
     'Reading',
     'Night time',
-    'Wake'];
+    'Wake'
+];
 
 var count = context.get('count');
 if (count === undefined) {
@@ -25,6 +26,6 @@ context.set('count', count);
 flow.set('scene', scene);
 msg.payload = scene;
 
-node.log('[Mei Lin\'s] set scene #' + count + ' ' + scene);
+node.log('[Mei Lin\'s] set scene ' + scene);
 
 return msg;

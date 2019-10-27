@@ -1,0 +1,5 @@
+msg.to = global.get('ADMIN_EMAIL');
+msg.topic = '[Welcome] unexpected event';
+msg.body = msg.payload;
+
+return msg;

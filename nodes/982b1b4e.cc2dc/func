@@ -1,5 +1,6 @@
 const scenes = [
-    'FR Bright'];
+    'FR Bright'
+];
 
 var count = context.get('count');
 if (count === undefined) {
@@ -23,6 +24,6 @@ context.set('count', count);
 flow.set('scene', scene);
 msg.payload = scene;
 
-node.log('[Fred\'s] set scene #' + count + ' ' + scene);
+node.log('[Fred\'s] set scene ' + scene);
 
 return msg;

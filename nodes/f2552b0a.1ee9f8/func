@@ -1,15 +1,21 @@
-const BRIGHTNESS_PAYLOAD = { payload: {
-    incrementBrightness: msg.payload,
-    transitionTime: 1.2
+const BRIGHTNESS_STEP = 15;
+
+var step = BRIGHTNESS_STEP * msg.payload;
+var message = { payload: {
+    incrementBrightness: step,
+    transitionTime: 1.1
 }};
 
 var msgs = [null, null];
 var lightsOn = flow.get('lightsOn') || {};
 if (lightsOn['Living room'] === true) {
-    msgs[0] = BRIGHTNESS_PAYLOAD;
+    msgs[0] = message;
 }
 if (lightsOn['Dining 1'] === true) {
-    msgs[1] = BRIGHTNESS_PAYLOAD;
+    msgs[1] = message;
 }
+
+node.log('[Ground floor] changing brightness (' +
+    step + ')');
 
 return msgs;

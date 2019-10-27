@@ -1,7 +1,0 @@
-const BRIGHTNESS_STEP = 15;
-
-msg.payload = BRIGHTNESS_STEP;
-
-node.log('[Fred\'s] increasing brightness');
-
-return msg;

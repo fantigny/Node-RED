@@ -1,5 +1,7 @@
+var body = JSON.stringify(msg, null, '\t');
+
 msg.to = global.get('ADMIN_EMAIL');
 msg.topic = '[Welcome] error';
-msg.body = msg.error.message;
+msg.body = body;
 
 return msg;

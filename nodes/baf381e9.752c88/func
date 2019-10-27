@@ -1,3 +1,9 @@
-node.log('[Home] toggle corridor');
+var anyOn = flow.get('stairsAnyOn') === true;
+var on = !anyOn;
+
+msg.payload = { on: on };
+
+node.log('[Home] turn ' +
+    (on? 'on': 'of') + ' staits');
 
 return msg;

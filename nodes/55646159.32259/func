@@ -1,18 +1,24 @@
-const BRIGHTNESS_PAYLOAD = { payload: {
-    incrementBrightness: msg.payload,
+const BRIGHTNESS_STEP = 15;
+
+var step = BRIGHTNESS_STEP * msg.payload;
+var message = { payload: {
+    incrementBrightness: step,
     transitionTime: 1.1
 }};
 
 var msgs = [null, null, null];
 var lightsOn = flow.get('lightsOn') || {};
 if (lightsOn['Bed'] === true) {
-    msgs[0] = BRIGHTNESS_PAYLOAD;
+    msgs[0] = message;
 }
 if (lightsOn['Piano'] === true) {
-    msgs[1] = BRIGHTNESS_PAYLOAD;
+    msgs[1] = message;
 }
 if (lightsOn['Ceiling'] === true) {
-    msgs[2] = BRIGHTNESS_PAYLOAD;
+    msgs[2] = message;
 }
+
+node.log('[Mei Lin\'s] changing brightness (' +
+    step + ')');
 
 return msgs;
