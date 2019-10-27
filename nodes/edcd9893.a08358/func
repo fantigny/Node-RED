@@ -3,20 +3,25 @@ var eventType = msg.payload.event_type;
 
 if (pushType === 'NACamera-movement' &&
         eventType === 'movement') {
+    node.log('[Welcome] motion');
     return;
 }
 if (pushType === 'NACamera-person' &&
         eventType === 'person') {
+    node.log('[Welcome] person');
     return;
 }
 if (eventType === undefined) {
     if (pushType === 'topology_changed') {
         return;
+        node.log('[Welcome] topology changed');
     }
     if (pushType === 'webhook_activation') {
+        node.log('[Welcome] webhook activation');
         return;
     }
     if (pushType === 'webhook_check') {
+        node.log('[Welcome] webhook check');
         return;
     }
 }
