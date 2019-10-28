@@ -4,6 +4,6 @@ var on = !anyOn;
 msg.payload = { on: on };
 
 node.log('[Home] turn ' +
-    (on? 'on': 'of') + ' staits');
+    (on? 'on': 'of') + ' stairs');
 
 return msg;

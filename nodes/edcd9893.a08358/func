@@ -3,25 +3,25 @@ var eventType = msg.payload.event_type;
 
 if (pushType === 'NACamera-movement' &&
         eventType === 'movement') {
-    node.log('[Welcome] motion');
+    node.log('motion');
     return;
 }
 if (pushType === 'NACamera-person' &&
         eventType === 'person') {
-    node.log('[Welcome] person');
+    node.log('person');
     return;
 }
 if (eventType === undefined) {
     if (pushType === 'topology_changed') {
+        node.log('topology changed');
         return;
-        node.log('[Welcome] topology changed');
     }
     if (pushType === 'webhook_activation') {
-        node.log('[Welcome] webhook activation');
+        node.log('webhook activation');
         return;
     }
     if (pushType === 'webhook_check') {
-        node.log('[Welcome] webhook check');
+        node.log('webhook check');
         return;
     }
 }
@@ -30,6 +30,7 @@ var payload = JSON.stringify(msg.payload, null, '\t');
 
 msg.payload = payload;
 
+node.log('found something!');
 node.log(payload);
 
 return msg;
