@@ -944,9 +944,9 @@
     }
    },
    "menu-deploymenu-item-flow": false,
-   "menu-deploymenu-item-full": true,
+   "menu-deploymenu-item-full": false,
    "menu-menu-item-sidebar": true,
-   "menu-deploymenu-item-node": false,
+   "menu-deploymenu-item-node": true,
    "menu-menu-item-palette": true
   }
  }

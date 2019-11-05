@@ -1,3 +1,17 @@
-msg.payload = msg.payload.celsius.toFixed(1);
+var celsius = msg.payload.celsius.toFixed(1);
+
+var color = '#67c1c9';
+if (celsius > 19) {
+    color = '#f59e18';
+} else if (celsius > 23) {
+    color = '#f59e18';
+} else {
+    color = '#fb0606';
+}
+
+msg.payload.celsius = celsius;
+msg.payload.color = color;
+
+node.log('[Home] updated temp (' + celsius + '°C)');
 
 return msg;

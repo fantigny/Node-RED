@@ -1,6 +1,7 @@
 <div id="background" style="
         background: url('/home_temp.png');
-        height: 93px;">
+        height: 93px;
+        background-color: {{msg.payload.color}};">
     <div id="value" style="
             color: black;
             position: relative;
@@ -8,6 +9,6 @@
             text-align: center;
             font-weight: bold;
             font-size: 13px;">
-        {{msg.payload}}°C
+        {{msg.payload.celsius}}°C
     </div>
 </div>

@@ -1,4 +1,4 @@
-const PIPE_RATE = 30 * 1000;//milliseconds
+const PIPE_RATE = 10 * 1000;//milliseconds
 const DISABLED = '(disabled)';
 
 var pipeCount = msg.delay / PIPE_RATE;
