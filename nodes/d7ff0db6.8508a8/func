@@ -1,6 +1,6 @@
 var on = flow.get('enabled');
 if (on === undefined) {
-    on = true;  
+    on = true;
 }
 
 msg.payload = { on: on };
