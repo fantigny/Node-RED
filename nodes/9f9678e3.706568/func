@@ -1,0 +1,3 @@
+msg.payload = msg.payload.celsius.toFixed(1);
+
+return msg;

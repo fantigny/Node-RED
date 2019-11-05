@@ -1,0 +1,13 @@
+<div id="background" style="
+        background: url('/home_temp.png');
+        height: 93px;">
+    <div id="value" style="
+            color: black;
+            position: relative;
+            top: 57px;
+            text-align: center;
+            font-weight: bold;
+            font-size: 13px;">
+        {{msg.payload}}°C
+    </div>
+</div>
