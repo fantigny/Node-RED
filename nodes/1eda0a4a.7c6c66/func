@@ -1,4 +1,4 @@
-const TIMER = 3;// minutes
+const TIMER = 5;// minutes
 const DELAY = TIMER * 60 * 1000;
 
 var eventMsg = msg;

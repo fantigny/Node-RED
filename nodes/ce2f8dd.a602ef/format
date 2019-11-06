@@ -1,14 +1,17 @@
 <div id="background" style="
+        height: 200px;
+        width: 200px;
         background: url('/home_temp.png');
-        height: 93px;
+        background-repeat: no-repeat;
+        background-size: 100% 100%;
         background-color: {{msg.payload.color}};">
     <div id="value" style="
-            color: black;
-            text-align: center;
             position: relative;
-            top: 57px;
+            top: 110px;
+            color: white;
             font-weight: bold;
-            font-size: 13px;">
-        {{msg.payload.celsius}}°C
+            font-size: 36px;
+            text-align: center;">
+        {{msg.payload.celsius}}°C&nbsp;
     </div>
 </div>
