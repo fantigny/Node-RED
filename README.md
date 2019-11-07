@@ -5,6 +5,8 @@ with
 [Welcome](https://www.netatmo.com/en-eu/security/cam-indoor), 
 [Hue](https://www2.meethue.com)
 
+Source split by [node-red-contrib-git-nodes](https://flows.nodered.org/node/node-red-contrib-git-nodes)
+
 # Home dashboard
 ![Home](static/img/home.PNG?raw=true "Home")
 
