@@ -2,10 +2,8 @@
 
 with...
 
-[Node-RED](https://nodered.org/)
-
-[Welcome](https://www.netatmo.com/en-eu/security/cam-indoor)
-
+[Node-RED](https://nodered.org/), 
+[Welcome](https://www.netatmo.com/en-eu/security/cam-indoor), 
 [Hue](https://www2.meethue.com)
 
 # Home dashboard
