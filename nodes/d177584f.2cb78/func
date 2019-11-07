@@ -16,6 +16,6 @@ if (pseudos.length === 0) {
 
 msg.payload = pseudos;
 
-node.log('[Welcome] ' + pseudos + ' seen');
+node.log('[Welcome] ' + pseudos.join(', ') + ' seen');
 
 return msg;

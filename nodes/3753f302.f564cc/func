@@ -18,6 +18,6 @@ for(var i=0; i<persons.length; i++) {
 
 msg.payload = pseudos;
 
-node.log('[Welcome] ' + pseudos + ' at home');
+node.log('[Welcome] ' + pseudos.join(', ') + ' at home');
 
 return msg;

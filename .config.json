@@ -915,6 +915,24 @@
      "file": "/home/wine/.node-red/node_modules/node-red-contrib-git-nodes/git-nodes-config.js"
     }
    }
+  },
+  "node-red-node-openweathermap": {
+   "name": "node-red-node-openweathermap",
+   "version": "0.2.1",
+   "local": false,
+   "nodes": {
+    "openweathermap": {
+     "name": "openweathermap",
+     "types": [
+      "openweathermap",
+      "openweathermap in"
+     ],
+     "enabled": true,
+     "local": true,
+     "module": "node-red-node-openweathermap",
+     "file": "/home/wine/.node-red/node_modules/node-red-node-openweathermap/weather.js"
+    }
+   }
   }
  },
  "users": {

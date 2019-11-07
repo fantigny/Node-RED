@@ -1,0 +1,9 @@
+const COLD = { topic: 'cold', payload: 18 };
+const WARM = { topic: 'warm', payload: 22 };
+
+var current  = {
+    topic: 'current',
+    payload: msg.payload.celsius
+};
+
+return [[ COLD, WARM, current ]];

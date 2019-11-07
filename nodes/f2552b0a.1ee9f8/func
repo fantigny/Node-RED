@@ -15,6 +15,7 @@ if (lightsOn['Dining 1'] === true) {
     msgs[1] = message;
 }
 
+
 node.log('[Ground floor] changing brightness (' +
     step + ')');
 
