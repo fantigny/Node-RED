@@ -1,4 +1,4 @@
-var celsius = msg.payload.celsius.toFixed();
+var celsius = msg.payload.adjusted_celsius.toFixed();
 
 var color = '#67c1c9';
 if (celsius > 18.5) {

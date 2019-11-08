@@ -916,21 +916,22 @@
     }
    }
   },
-  "node-red-node-openweathermap": {
-   "name": "node-red-node-openweathermap",
-   "version": "0.2.1",
+  "node-red-node-darksky": {
+   "name": "node-red-node-darksky",
+   "version": "0.1.18",
    "local": false,
    "nodes": {
-    "openweathermap": {
-     "name": "openweathermap",
+    "darksky": {
+     "name": "darksky",
      "types": [
-      "openweathermap",
-      "openweathermap in"
+      "darksky-credentials",
+      "darksky",
+      "darksky in"
      ],
      "enabled": true,
      "local": true,
-     "module": "node-red-node-openweathermap",
-     "file": "/home/wine/.node-red/node_modules/node-red-node-openweathermap/weather.js"
+     "module": "node-red-node-darksky",
+     "file": "/home/wine/.node-red/node_modules/node-red-node-darksky/darksky.js"
     }
    }
   }

@@ -15,6 +15,6 @@
     "node-red-contrib-serial-iterator": "~0.1.3",
     "node-red-contrib-sunevents": "0.0.5",
     "node-red-dashboard": "~2.17.1",
-    "node-red-node-openweathermap": "~0.2.1"
+    "node-red-node-darksky": "~0.1.18"
   }
 }
