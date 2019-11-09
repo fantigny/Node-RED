@@ -916,22 +916,20 @@
     }
    }
   },
-  "node-red-node-darksky": {
-   "name": "node-red-node-darksky",
-   "version": "0.1.18",
+  "node-red-node-ping": {
+   "name": "node-red-node-ping",
+   "version": "0.1.0",
    "local": false,
    "nodes": {
-    "darksky": {
-     "name": "darksky",
+    "ping": {
+     "name": "ping",
      "types": [
-      "darksky-credentials",
-      "darksky",
-      "darksky in"
+      "ping"
      ],
      "enabled": true,
      "local": true,
-     "module": "node-red-node-darksky",
-     "file": "/home/wine/.node-red/node_modules/node-red-node-darksky/darksky.js"
+     "module": "node-red-node-ping",
+     "file": "/home/wine/.node-red/node_modules/node-red-node-ping/88-ping.js"
     }
    }
   }

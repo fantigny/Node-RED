@@ -1,6 +1,20 @@
 var pushType = msg.payload.push_type;
 var eventType = msg.payload.event_type;
 
+if (eventType === undefined) {
+    if (pushType === 'topology_changed') {
+        node.log('[Welcome] topology changed');
+        return;
+    }
+    if (pushType === 'webhook_activation') {
+        node.log('[Welcome] webhook activation');
+        return;
+    }
+    if (pushType === 'ping') {
+        node.log('[Welcome] ping');
+        return;
+    }
+}
 if (pushType === 'NACamera-movement' &&
         eventType === 'movement') {
     node.log('[Welcome] motion');
@@ -11,26 +25,7 @@ if (pushType === 'NACamera-person' &&
     node.log('[Welcome] person');
     return;
 }
-if (eventType === undefined) {
-    if (pushType === 'topology_changed') {
-        node.log('[Welcome] topology changed');
-        return;
-    }
-    if (pushType === 'webhook_activation') {
-        node.log('[Welcome] webhook activation');
-        return;
-    }
-    if (pushType === 'webhook_check') {
-        node.log('[Welcome] webhook check');
-        return;
-    }
-}
 
-var payload = JSON.stringify(msg.payload, null, '\t');
-
-msg.payload = payload;
-
-node.log('[Welcome] found something!');
-node.log(payload);
+node.log('[Welcome] unknown event!');
 
 return msg;

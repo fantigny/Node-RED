@@ -1,0 +1,6 @@
+var payload = msg.payload;
+node.log('[Hue] temp(' +
+    payload.celsius + ') adjusted to ' +
+    payload.adjusted_celsius + ' °C');
+
+return msg;

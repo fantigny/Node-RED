@@ -1,16 +1,16 @@
 if (flow.get('timerOn') === false) {
-    return null;
+    return;
 }
 
 var anyOn = msg.payload.on === true ||
     msg.payload.anyOn === true;
 flow.set('anyOn', anyOn);
 if (anyOn) {
-    return null;
+    return;
 }
 
 flow.set('timerOn', false);
 
 node.log('[Corridor] timer stopped')
 
-return [ { reset: true}, { payload: 'stop' } ];
+return [ { payload: 'stop' }, { reset: true} ];

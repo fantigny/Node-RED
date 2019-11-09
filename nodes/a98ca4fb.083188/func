@@ -18,4 +18,4 @@ if (flow.get('anyOn') === false) {
     timerMsg = { delay: 0 };
 }
 
-return [ timerMsg, onMsg ];
+return [ onMsg, timerMsg ];

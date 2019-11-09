@@ -7,7 +7,7 @@
         background-color: {{msg.payload.color}};">
     <div id="value" style="
             position: relative;
-            top: 100px;
+            top: 94px;
             color: black;
             font-weight: bold;
             font-size: 36px;
