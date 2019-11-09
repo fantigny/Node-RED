@@ -14,7 +14,7 @@ Source split by [node-red-contrib-git-nodes](https://flows.nodered.org/node/node
 ![Weather UI](static/img/weather_ui.PNG?raw=true "Weather UI")
 
 # WineBox UI
-![WineBox UI](static/img/home_flow.PNG?raw=true "WineBox UI")
+![WineBox UI](static/img/winebox_ui.PNG?raw=true "WineBox UI")
 
 # Home Flow
 ![Home Flow](static/img/home_flow.PNG?raw=true "Home Flow")
