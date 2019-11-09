@@ -7,17 +7,20 @@ with
 
 Source split by [node-red-contrib-git-nodes](https://flows.nodered.org/node/node-red-contrib-git-nodes)
 
-# Home dashboard
-![Home](static/img/home.PNG?raw=true "Home")
+# Home UI
+![Home UI](static/img/home_ui.PNG?raw=true "Home UI")
 
-# Stats dashboard
-![Stats](static/img/stats.PNG?raw=true "Stats")
+# Weather UI
+![Weather UI](static/img/weather_ui.PNG?raw=true "Weather UI")
 
-# Home dashboard flow
+# WineBox UI
+![WineBox UI](static/img/home_flow.PNG?raw=true "WineBox UI")
+
+# Home Flow
 ![Home Flow](static/img/home_flow.PNG?raw=true "Home Flow")
 
-# Welcome sensor flow
-![Stairs Flow](static/img/welcome_flow.PNG?raw=true "Stairs Flow")
+# Welcome flow
+![Welcome flow](static/img/welcome_flow.PNG?raw=true "Welcome flow")
 
-# Stairs automation flow
+# Stairs flow
 ![Stairs Flow](static/img/stairs_flow.PNG?raw=true "Stairs Flow")
