@@ -1,3 +1,6 @@
-msg.payload = { ids: msg.payload, idPseudos: null}
+msg.payload = {
+    idPseudos: null,
+    ids: msg.payload
+}
 
 return msg;

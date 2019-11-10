@@ -2,8 +2,7 @@ if (flow.get('timerOn') === false) {
     return;
 }
 
-var anyOn = msg.payload.on === true ||
-    msg.payload.anyOn === true;
+var anyOn = msg.payload.on || msg.payload.anyOn;
 flow.set('anyOn', anyOn);
 if (anyOn) {
     return;

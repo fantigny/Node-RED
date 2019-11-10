@@ -21,4 +21,4 @@ timerMsgs.push({
 node.log('[Corridor] turn off in ' +
     TIMER + ' min (timer)')
 
-return [ eventMsg, timerMsgs ];
+return [ timerMsgs, eventMsg ];

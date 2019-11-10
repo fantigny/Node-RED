@@ -1,5 +1,3 @@
-msg.to = global.get('ADMIN_EMAIL');
 msg.topic = '[Welcome] unknown event!';
-msg.body = msg.payload;
 
 return msg;

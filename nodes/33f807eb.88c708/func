@@ -1,49 +1,42 @@
 const MAX_ATTEMPT = 3;
 
-var cientId = global.get('CLIENT_ID');
-var clientSecret = global.get('CLIENT_SECRET');
-
 // handle auth issue
 var attempt = flow.get('attempt') || 0;
 flow.set('attempt', ++attempt);
 if (attempt > MAX_ATTEMPT) {
-    cientId = global.get('BACKUP_CLIENT_ID');
-    clientSecret = global.get('BACKUP_CLIENT_SECRET');
-    node.log('[Welcome] failed to authenticate ' +
-        attempt + ' times, trying backup connexion');
-    if (attempt > MAX_ATTEMPT*2-1) {
-        flow.set('attempt', 0);
-        node.log('[Welcome] authentication aborted');
-        return;
-    }
+    flow.set('attempt', 0);
+    node.log('[Netatmo] authentication aborted');
+    return;
 }
 
-// build credentials
-var scope = [
+var clientId = global.get('CLIENT_ID');
+var clientSecret = global.get('CLIENT_SECRET');
+var creds = {};
+creds.client_id = clientId;
+creds.client_secret = clientSecret;
+creds.scope = [
     'read_camera',
     'write_camera',
     'access_camera'
 ].join(' ');
-var creds = {
-    'client_id': cientId,
-    'client_secret': clientSecret,
-    'scope': scope,
-};
+
 var refresh_token = flow.get('refresh_token');
 if (refresh_token === undefined) {
     creds.grant_type = 'password';
     creds.username = global.get('USERNAME');
     creds.password = global.get('PASSWORD');
-    node.log('[Welcome] create token');
+    node.log('[Netatmo] create token');
 } else {
     creds.grant_type = 'refresh_token';
     creds.refresh_token = refresh_token;
-    node.log('[Welcome] refresh token');
+    node.log('[Netatmo] refresh token');
 }
 
-msg.oauth2Request = { 
-    'access_token_url': global.get('NETATMO_OAUTH2'), 
-    'credentials': creds
-};
+var url = global.get('NETATMO_OAUTH2');
+var oauth2Req = {};
+oauth2Req.access_token_url = url;
+oauth2Req.credentials = creds;
+
+msg.oauth2Request = oauth2Req;
 
 return msg;

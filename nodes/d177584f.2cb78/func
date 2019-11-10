@@ -3,7 +3,7 @@ const UNKNOWN = 'Unknown face';
 var pseudos = [];
 var ids = msg.payload.ids;
 var idPseudos = msg.payload.idPseudos;
-for(i=0; i<ids.length; i++) {
+for(i=0, n=ids.length; i<n; i++) {
     var pseudo = idPseudos[ids[i]];
     if (pseudo !== undefined) {
         pseudos.push(pseudo);
@@ -16,6 +16,7 @@ if (pseudos.length === 0) {
 
 msg.payload = pseudos;
 
-node.log('[Welcome] ' + pseudos.join(', ') + ' seen');
+node.log('[Welcome] ' +
+    pseudos.join(', ') + ' seen');
 
 return msg;
