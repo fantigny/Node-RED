@@ -218,7 +218,12 @@ module.exports = {
 	'USERNAME': 'frederic.antigny@gmail.com',
 	'PASSWORD': 'fAnO-1718',
 	'WEBHOOK': 'http://speederpan.uk.to/welcome',
-	'ADMIN_EMAIL':'frederic.antigny@gmail.com'
+	'ADMIN_EMAIL':'frederic.antigny@gmail.com',
+
+	'NETATMO_OAUTH2': 'https://api.netatmo.com/oauth2/token',
+	'NETATMO_GET_HOMEDATA': 'https://api.netatmo.net/api/gethomedata',
+	'NETATMO_DROP_WEBHOOK': 'https://api.netatmo.net/api/dropwebhook',
+	'NETATMO_ADD_WEBHOOK': 'https://api.netatmo.net/api/addwebhook'
     },
 
     // Context Storage

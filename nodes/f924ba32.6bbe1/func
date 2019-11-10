@@ -1,7 +1,0 @@
-var body = JSON.stringify(msg, null, '\t');
-
-msg.to = global.get('ADMIN_EMAIL');
-msg.topic = '[webhook] error';
-msg.body = body;
-
-return msg;

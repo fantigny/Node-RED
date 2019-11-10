@@ -1,10 +1,8 @@
-msg.headers = {
-    authorization: 'Bearer ' +
-        flow.get('access_token')
-};
-msg.payload = {
-    size: 0
-};
-msg.url = 'https://api.netatmo.net/api/gethomedata';
+var url = global.get('NETATMO_GET_HOMEDATA');
+var bearer = 'Bearer ' + flow.get('access_token');
+
+msg.url = url;
+msg.headers = { authorization: bearer };
+msg.payload = { size: 0 };
 
 return msg;

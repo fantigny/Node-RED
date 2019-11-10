@@ -919,7 +919,7 @@
   "node-red-node-ping": {
    "name": "node-red-node-ping",
    "version": "0.1.0",
-   "local": false,
+   "local": true,
    "nodes": {
     "ping": {
      "name": "ping",

@@ -1,11 +1,12 @@
-msg.headers = {
-    authorization: 'Bearer ' +
-        flow.get('access_token')
-};
+var url = global.get('NETATMO_DROP_WEBHOOK');
+var bearer = 'Bearer ' + flow.get('access_token');
+var webhook = global.get('WEBHOOK');
+
+msg.url = url;
+msg.headers = { authorization: bearer };
 msg.payload = {
-    url: global.get('WEBHOOK'),
+    url: webhook,
     app_type: 'app_camera'
 };
-msg.url = 'https://api.netatmo.net/api/dropwebhook';
 
 return msg;

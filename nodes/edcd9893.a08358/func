@@ -7,23 +7,20 @@ if (eventType === undefined) {
         return;
     }
     if (pushType === 'webhook_activation') {
-        node.log('[Welcome] webhook activation');
+        node.log('[Welcome] webhook activated');
         return;
     }
-    if (pushType === 'ping') {
-        node.log('[Welcome] ping');
+} else {
+    if (pushType === 'NACamera-movement' &&
+            eventType === 'movement') {
+        node.log('[Welcome] motion');
         return;
     }
-}
-if (pushType === 'NACamera-movement' &&
-        eventType === 'movement') {
-    node.log('[Welcome] motion');
-    return;
-}
-if (pushType === 'NACamera-person' &&
-        eventType === 'person') {
-    node.log('[Welcome] person');
-    return;
+    if (pushType === 'NACamera-person' &&
+            eventType === 'person') {
+        node.log('[Welcome] person');
+        return;
+    }
 }
 
 node.log('[Welcome] unknown event!');
