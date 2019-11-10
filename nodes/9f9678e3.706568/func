@@ -1,13 +1,14 @@
-var celsius = msg.payload.adjusted_celsius.toFixed();
+var payload = msg.payload;
 
+var celsius = payload.celsius;
 var color = '#67c1c9';
-if (celsius > 19) {
+if (celsius > 19.5) {
     color = '#f59e18';
-} else if (celsius > 25) {
+} else if (celsius > 25.5) {
     color = '#fb0606';
 }
 
-msg.payload.celsius = celsius;
-msg.payload.color = color;
+payload.celsius = celsius.toFixed();
+payload.color = color;
 
 return msg;

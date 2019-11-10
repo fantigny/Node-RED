@@ -1,6 +1,7 @@
-var payload = msg.payload;
-node.log('[Hue] temp(' +
-    payload.celsius + ') adjusted to ' +
-    payload.adjusted_celsius + ' °C');
+node.log('[Hue] temp (' +
+    msg.payload.celsius +
+    '°C with ' +
+    msg.payload.celsius_offset +
+    '°C offset)');
 
 return msg;

@@ -1,6 +1,4 @@
-var payload = msg.payload;
-node.log('[Hue] light(' +
-    payload.lux + ') adjusted to ' +
-    payload.adjusted_lux + ' lux');
+node.log('[Hue] light (' +
+    msg.payload.lux + ' lux)');
     
 return msg;

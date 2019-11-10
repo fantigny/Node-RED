@@ -1,7 +1,7 @@
 var text = '';
 var pseudos = msg.payload;
 if (pseudos.length === 0) {
-    text = 'nobody\'s';
+    text = 'nobody seen recently';
 } else {
     pseudos.sort();
     for(i=0; i<pseudos.length; i++) {
@@ -16,8 +16,8 @@ if (pseudos.length === 0) {
     }
     text += ' ';
     text += pseudos.length === 1?'is': 'are';
+    text += ' home';
 }
-text += ' home';
 
 msg.payload = text;
 
