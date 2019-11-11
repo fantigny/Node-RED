@@ -3,7 +3,8 @@
 with
 [Node-RED](https://nodered.org/), 
 [Welcome](https://www.netatmo.com/en-eu/security/cam-indoor), 
-[Hue](https://www2.meethue.com)
+[Hue](https://www2.meethue.com),
+[Dark Sky](https://darksky.net/dev)
 
 Source split by [node-red-contrib-git-nodes](https://flows.nodered.org/node/node-red-contrib-git-nodes)
 
