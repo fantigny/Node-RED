@@ -1,7 +1,0 @@
-node.log('[Hue] temp (' +
-    msg.payload.celsius +
-    '°C with ' +
-    msg.payload.celsius_offset +
-    '°C offset)');
-
-return msg;

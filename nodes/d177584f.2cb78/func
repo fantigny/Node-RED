@@ -2,21 +2,21 @@ const UNKNOWN = 'Unknown face';
 
 var pseudos = [];
 var ids = msg.payload.ids;
-var idPseudos = msg.payload.idPseudos;
-for(i=0, n=ids.length; i<n; i++) {
-    var pseudo = idPseudos[ids[i]];
-    if (pseudo !== undefined) {
-        pseudos.push(pseudo);
+if (ids.length === 0) {
+    pseudos.push('no one');
+} else {
+    var idPseudos = msg.payload.idPseudos;
+    for(i=0, n=ids.length; i<n; i++) {
+        var pseudo = idPseudos[ids[i]];
+        if (pseudo !== undefined) {
+            pseudos.push(pseudo);
+        }
+    }
+    if (pseudos.length === 0) {
+        pseudos.push(UNKNOWN);
     }
 }
 
-if (pseudos.length === 0) {
-    pseudos.push(UNKNOWN);
-}
-
 msg.payload = pseudos;
-
-node.log('[Welcome] ' +
-    pseudos.join(', ') + ' seen');
 
 return msg;

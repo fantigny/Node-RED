@@ -1,5 +1,17 @@
-<a  class="weatherwidget-io"
+<a  id="forecast7"
+    class="weatherwidget-io"
     href="https://forecast7.com/en/51d51n0d24/w12-0pg/"
     data-icons="Climacons"
     data-days="3"
     data-theme="weather_one"></a>
+  
+<script>
+(function(scope) {
+    // watch msg object from Node-RED
+    scope.$watch('msg', function(msg) {
+        var forecast7 = document.getElementById("forecast7");
+        forecast7.className = '';
+        forecast7.className = 'weatherwidget-io';
+    });
+})(scope);
+</script>

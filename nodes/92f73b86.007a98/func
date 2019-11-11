@@ -1,0 +1,4 @@
+node.log('[Welcome] ' +
+    msg.payload.join(', ') + ' seen');
+    
+return msg;

@@ -1,0 +1,27 @@
+const CELSIUS_OFFSET = 1.5;
+const TEMP_NUMBER = 10;
+
+var payload = msg.payload;
+
+var celsius = payload.celsius + CELSIUS_OFFSET;
+var temps = flow.get('temps') || [];
+temps.push(celsius);
+
+var n = temps.length;
+while (n > TEMP_NUMBER) {
+    temps.shift();
+    n = temps.length;
+}
+flow.set('temps', temps);
+
+var sum = 0;
+for(var i=0; i<n; i++) {
+    sum += temps[i];
+    node.log(temps[i]);
+}
+celsius = sum / n;
+celsius = Math.round(celsius * 1000) / 1000;
+
+payload.celsius = celsius;
+
+return msg;
