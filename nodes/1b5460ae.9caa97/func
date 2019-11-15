@@ -1,68 +1,30 @@
-const TEMP_NUMBER = 10;
+const NB_VALUES = 10;
+
+var smooth = function(name, value, nb_values, decimals) {
+    var values = flow.get(name) || [];
+    values.push(value);
+    
+    while(values.length > nb_values) {
+        values.shift();
+    }
+    flow.set(name, values);
+    
+    var avg = values.reduce((t, v) => t + v);
+    avg /= values.length;
+    avg *= Math.pow(10, decimals);
+    avg = Math.round(avg);
+    avg /= Math.pow(10, decimals);
+    
+    return avg;
+}
 
 var payload = msg.payload;
 
-// temp
-var temperature = payload.temperature;
-var temps = flow.get('temps') || [];
-temps.push(temperature);
-
-var n = temps.length;
-while (n > TEMP_NUMBER) {
-    temps.shift();
-    n = temps.length;
-}
-flow.set('temps', temps);
-
-var sum = 0;
-for(var i=0; i<n; i++) {
-    sum += temps[i];
-}
-temperature = sum / n;
-temperature = Math.round(temperature * 1000) / 1000;
-
-payload.temperature = temperature;
-
-// humidity
-var humidity = payload.humidity;
-var hums = flow.get('hums') || [];
-hums.push(humidity);
-
-n = hums.length;
-while (n > TEMP_NUMBER) {
-    hums.shift();
-    n = hums.length;
-}
-flow.set('hums', hums);
-
-sum = 0;
-for(i=0; i<n; i++) {
-    sum += hums[i];
-}
-humidity = sum / n;
-humidity = Math.round(humidity * 100000) / 100000;
-
-payload.humidity = humidity;
-
-// pressure
-var pressure = payload.pressure;
-var press = flow.get('press') || [];
-press.push(pressure);
-
-n = press.length;
-while (n > TEMP_NUMBER) {
-    press.shift();
-    n = press.length;
-}
-flow.set('press', press);
-
-sum = 0;
-for(i=0; i<n; i++) {
-    sum += press[i];
-}
-pressure = sum / n;
-pressure = Math.round(pressure * 1000) / 1000;
-
-payload.pressure = pressure;
+payload.temperature = smooth('temps',
+    payload.temperature, NB_VALUES, 1);
+payload.humidity = smooth('hum',
+    payload.humidity, NB_VALUES, 2);
+payload.pressure = smooth('pres',
+    payload.pressure, NB_VALUES, 2);
 
 return msg;

@@ -4,6 +4,7 @@
   "version": "0.0.1",
   "private": true,
   "dependencies": {
+    "node-red-contrib-average": "~0.1.7",
     "node-red-contrib-cpu": "0.0.4",
     "node-red-contrib-email-out": "~0.1.1",
     "node-red-contrib-fs-ops": "~1.5.0",

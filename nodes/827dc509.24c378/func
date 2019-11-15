@@ -1,6 +1,6 @@
 var home = msg.payload.body.homes[0];
 flow.set('homeId', home.id);
-global.set('vpnUrl', home.cameras[0].vpn_url + '/live/index_local.m3u8');
+//global.set('vpnUrl', home.cameras[0].vpn_url + '/live/index_local.m3u8');
 
 node.log('[Welcome] at ' + home.name);
 

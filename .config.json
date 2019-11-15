@@ -932,6 +932,23 @@
      "file": "/home/wine/.node-red/node_modules/node-red-node-ping/88-ping.js"
     }
    }
+  },
+  "node-red-contrib-average": {
+   "name": "node-red-contrib-average",
+   "version": "0.1.7",
+   "local": false,
+   "nodes": {
+    "average": {
+     "name": "average",
+     "types": [
+      "average"
+     ],
+     "enabled": true,
+     "local": true,
+     "module": "node-red-contrib-average",
+     "file": "/home/wine/.node-red/node_modules/node-red-contrib-average/average.js"
+    }
+   }
   }
  },
  "users": {

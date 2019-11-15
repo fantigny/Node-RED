@@ -8,7 +8,7 @@ if (celsius > 19.5) {
     color = '#fb0606';
 }
 
-payload.celsius = celsius.toFixed();
+payload.celsius_smooth = celsius.toFixed();
 payload.color = color;
 
 return msg;

@@ -1,27 +1,44 @@
-const CELSIUS_OFFSET = 1.5;
-const TEMP_NUMBER = 10;
+const CELSIUS_OFFSET = 1.71;
+const NB_VALUES = 10;
+
+var avgWithPrevious = function(current) {
+    var previous = flow.get('previous');
+    flow.set('previous', current);
+    
+    if (previous === undefined) {
+        previous = current;
+    }
+    
+    return (previous + current) / 2;
+}
+
+var smooth = function(name, value, nb_values) {
+    var values = flow.get(name) || [];
+    values.push(value);
+    
+    while(values.length > nb_values) {
+        values.shift();
+    }
+    flow.set(name, values);
+    
+    return values.reduce((t, v) => t + v) /
+        values.length;
+}
 
 var payload = msg.payload;
+var celsius = payload.celsius;
+celsius += CELSIUS_OFFSET;
+celsius = avgWithPrevious(celsius);
+celsius = smooth('temps', celsius, NB_VALUES);
 
-var celsius = payload.celsius + CELSIUS_OFFSET;
-var temps = flow.get('temps') || [];
-temps.push(celsius);
+var fahrenheit = celsius;
+fahrenheit *= 9/5;
+fahrenheit += 32;
 
-var n = temps.length;
-while (n > TEMP_NUMBER) {
-    temps.shift();
-    n = temps.length;
-}
-flow.set('temps', temps);
-
-var sum = 0;
-for(var i=0; i<n; i++) {
-    sum += temps[i];
-    node.log(temps[i]);
-}
-celsius = sum / n;
-celsius = Math.round(celsius * 1000) / 1000;
+celsius = Math.round(celsius * 100) / 100;
+fahrenheit = Math.round(fahrenheit * 100) / 100;
 
 payload.celsius = celsius;
+payload.fahrenheit = fahrenheit;
 
 return msg;

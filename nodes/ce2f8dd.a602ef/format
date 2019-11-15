@@ -12,6 +12,6 @@
             font-weight: bold;
             font-size: 36px;
             text-align: center;">
-        {{msg.payload.celsius}}°C&nbsp;
+        {{msg.payload.celsius_smooth}}°C&nbsp;
     </div>
 </div>
