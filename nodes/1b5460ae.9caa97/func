@@ -21,9 +21,9 @@ var smooth = function(name, value, nb_values, decimals) {
 var payload = msg.payload;
 
 payload.temperature = smooth('temps',
-    payload.temperature, NB_VALUES, 1);
+    payload.temperature, NB_VALUES, 2);
 payload.humidity = smooth('hum',
-    payload.humidity, NB_VALUES, 2);
+    payload.humidity, NB_VALUES, 4);
 payload.pressure = smooth('pres',
     payload.pressure, NB_VALUES, 2);
 

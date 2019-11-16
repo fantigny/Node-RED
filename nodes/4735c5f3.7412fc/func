@@ -9,6 +9,7 @@ if (avg > 0.5) {
     report = 'Overloaded';
 }
 
-msg.payload = report;
+msg.payload.report = report;
+msg.payload.icon = report.toLowerCase();
 
 return msg;

@@ -936,7 +936,7 @@
   "node-red-contrib-average": {
    "name": "node-red-contrib-average",
    "version": "0.1.7",
-   "local": false,
+   "local": true,
    "nodes": {
     "average": {
      "name": "average",
