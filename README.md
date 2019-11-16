@@ -20,7 +20,7 @@ Source split by [node-red-contrib-git-nodes](https://flows.nodered.org/node/node
 # Welcome sensor
 ![Welcome sensor](rsc/img/welcome_sensor.PNG?raw=true "Welcome sensor")
 
-# Home Flow
+# Home UI Flow
 
 ![Home Flow](rsc/img/home_flow.PNG?raw=true "Home Flow")
 # Stairs flow
