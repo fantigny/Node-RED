@@ -17,11 +17,11 @@ Source split by [node-red-contrib-git-nodes](https://flows.nodered.org/node/node
 # WineBox UI
 ![WineBox UI](rsc/img/winebox_ui.PNG?raw=true "WineBox UI")
 
+# Welcome sensor
+![Welcome sensor](rsc/img/welcome_sensor.PNG?raw=true "Welcome sensor")
+
 # Home Flow
+
 ![Home Flow](rsc/img/home_flow.PNG?raw=true "Home Flow")
-
-# Welcome flow
-![Welcome flow](rsc/img/welcome_flow.PNG?raw=true "Welcome flow")
-
 # Stairs flow
 ![Stairs Flow](rsc/img/stairs_flow.PNG?raw=true "Stairs Flow")
