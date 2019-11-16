@@ -11,17 +11,17 @@ Source split by [node-red-contrib-git-nodes](https://flows.nodered.org/node/node
 # Home UI
 ![Home UI](rsc/img/home_ui.PNG?raw=true "Home UI")
 
-# Weather UI
-![Weather UI](rsc/img/weather_ui.PNG?raw=true "Weather UI")
+# Weather Report
+![Weather Report](rsc/img/weather_ui.PNG?raw=true "Weather UI")
 
-# WineBox UI
-![WineBox UI](rsc/img/winebox_ui.PNG?raw=true "WineBox UI")
+# Server Report
+![Server report](rsc/img/winebox_ui.PNG?raw=true "WineBox UI")
 
 # Welcome sensor
 ![Welcome sensor](rsc/img/welcome_sensor.PNG?raw=true "Welcome sensor")
 
 # Home UI Flow
-
 ![Home Flow](rsc/img/home_flow.PNG?raw=true "Home Flow")
+
 # Stairs flow
 ![Stairs Flow](rsc/img/stairs_flow.PNG?raw=true "Stairs Flow")
