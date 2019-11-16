@@ -25,3 +25,7 @@ Source split by [node-red-contrib-git-nodes](https://flows.nodered.org/node/node
 
 # Stairs flow
 ![Stairs Flow](rsc/img/stairs_flow.PNG?raw=true "Stairs Flow")
+
+#Logs
+![Logs](rsc/img/log.PNG?raw=true "Logs")
+
