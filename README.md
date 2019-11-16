@@ -17,8 +17,8 @@ Source split by [node-red-contrib-git-nodes](https://flows.nodered.org/node/node
 # Server Report
 ![Server report](rsc/img/server_ui.PNG?raw=true "WineBox UI")
 
-# Welcome sensor
-![Welcome sensor](rsc/img/welcome_flow.PNG?raw=true "Welcome sensor")
+# Welcome sensor flow
+![Welcome sensor flow](rsc/img/welcome_flow.PNG?raw=true "Welcome sensor flow")
 
 # Home UI Flow
 ![Home Flow](rsc/img/home_flow.PNG?raw=true "Home Flow")
