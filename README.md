@@ -15,7 +15,7 @@ Source split by [node-red-contrib-git-nodes](https://flows.nodered.org/node/node
 ![Weather Report](rsc/img/weather_ui.PNG?raw=true "Weather UI")
 
 # Server Report
-![Server report](rsc/img/winebox_ui.PNG?raw=true "WineBox UI")
+![Server report](rsc/img/server_ui.PNG?raw=true "WineBox UI")
 
 # Welcome sensor
 ![Welcome sensor](rsc/img/welcome_sensor.PNG?raw=true "Welcome sensor")
