@@ -1,1 +1,1 @@
-{{value}}°C
+{{value|number:0}}°C

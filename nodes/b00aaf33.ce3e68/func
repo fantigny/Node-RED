@@ -4,6 +4,3 @@ if (pseudos.length === 0) {
 }
 node.log('[Welcome] ' +
     pseudos.join(', ') + ' at home');
-
-
-return msg;
