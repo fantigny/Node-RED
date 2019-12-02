@@ -1,5 +1,4 @@
-<a  id="forecast7"
-    class="weatherwidget-io"
+<a  class="weatherwidget-io"
     href="https://forecast7.com/en/51d51n0d24/w12-0pg/"
     data-icons="Climacons"
     data-days="3"
@@ -7,11 +6,8 @@
   
 <script>
 (function(scope) {
-    // watch msg object from Node-RED
     scope.$watch('msg', function(msg) {
-        var forecast7 = document.getElementById("forecast7");
-        forecast7.className = '';
-        forecast7.className = 'weatherwidget-io';
+        __weatherwidget_init();
     });
 })(scope);
 </script>

@@ -1,35 +1,44 @@
-const CELSIUS_OFFSET = 1.71;
-const NB_VALUES = 10;
+const OFFSET_SENSOR = 1.71; // deg C
+const OFFSET_ROOM   = 0.69; // deg C
+const NB_AVG_VALUES = 10;
 
-var avgWithPrevious = function(current) {
-    var previous = flow.get('previous');
-    flow.set('previous', current);
-    
+var pair = function(current) {
+    var previous = context.get('previous');
     if (previous === undefined) {
         previous = current;
     }
     
-    return (previous + current) / 2;
+    context.set('previous', current);
+    
+    return (previous + current) / 2
 }
 
 var smooth = function(name, value, nb_values) {
     var values = flow.get(name) || [];
     values.push(value);
     
-    while(values.length > nb_values) {
-        values.shift();
+    var total = 0;
+    var totalWeight = 0;
+    for(var i=0, n=values.length; i<n; i++) {
+        if (i < nb_values) {
+            var weight = 1 / (1 + i/2);
+            totalWeight += weight;
+            total += values[i] * weight;
+        } else {
+            values.shift();
+        }
     }
     flow.set(name, values);
     
-    return values.reduce((t, v) => t + v) /
-        values.length;
+    return total / totalWeight;
 }
 
 var payload = msg.payload;
 var celsius = payload.celsius;
-celsius += CELSIUS_OFFSET;
-celsius = avgWithPrevious(celsius);
-celsius = smooth('temps', celsius, NB_VALUES);
+celsius += OFFSET_SENSOR;
+celsius += OFFSET_ROOM;
+celsius = pair(celsius);
+celsius = smooth('temps', celsius, NB_AVG_VALUES);
 
 var fahrenheit = celsius;
 fahrenheit *= 9/5;

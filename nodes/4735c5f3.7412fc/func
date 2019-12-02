@@ -1,11 +1,10 @@
-var avg = msg.payload.loadavg[1];
+var avg = msg.payload.loadavg[0];
 
 var report = 'Idle';
 if (avg > 0.5) {
     report = 'Busy';
-} else if (avg > 1.5) {
-    report = 'Loaded';
-} else if (avg > 2.5) {
+}
+if (avg > 2) {
     report = 'Overloaded';
 }
 

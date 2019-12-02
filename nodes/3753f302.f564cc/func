@@ -1,7 +1,6 @@
 const UNKNOWN = 'Unknown';
 
 var pseudos = [];
-var oneUnknown = false;
 var persons = msg.payload.body.homes[0].persons;
 for(var i=0, n=persons.length; i<n; i++) {
     var person = persons[i];
@@ -10,8 +9,7 @@ for(var i=0, n=persons.length; i<n; i++) {
     }
     if (person.pseudo !== undefined) {
         pseudos.push(person.pseudo);
-    } else if (oneUnknown === false) {
-        oneUnknown = true;
+    } else if (!pseudos.includes(UNKNOWN)) {
         pseudos.push(UNKNOWN);
     }
 }

@@ -1,0 +1,5 @@
+var json = JSON.parse(msg.payload);
+
+msg.payload = json.currently;
+
+return msg;
