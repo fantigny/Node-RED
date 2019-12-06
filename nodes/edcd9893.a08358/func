@@ -1,28 +1,23 @@
+const KNOWN_EVENTS = [
+    ['topology_changed'     , undefined         , 'topology changed'    ],
+    ['webhook_activation'   , undefined         , 'webhook activated'   ],
+    ['NACamera-movement'    , 'movement'        , 'topology changed'    ],
+    ['NACamera-person'      , 'person'          , 'topology changed'    ],
+    ['NACamera-connection'  , 'connection'      , 'connected'           ],
+    ['NACamera-connection'  , 'disconnection'   , 'disconnected'        ]
+];
+
 var pushType = msg.payload.push_type;
 var eventType = msg.payload.event_type;
 
-if (eventType === undefined) {
-    if (pushType === 'topology_changed') {
-        node.log('[Welcome] topology changed');
-        return;
-    }
-    if (pushType === 'webhook_activation') {
-        node.log('[Welcome] webhook activated');
-        return;
-    }
-} else {
-    if (pushType === 'NACamera-movement' &&
-            eventType === 'movement') {
-        node.log('[Welcome] motion');
-        return;
-    }
-    if (pushType === 'NACamera-person' &&
-            eventType === 'person') {
-        node.log('[Welcome] person');
-        return;
+for(var i=0; i<KNOWN_EVENTS.length; i++) {
+    if (KNOWN_EVENTS[i][0] === pushType &&
+            KNOWN_EVENTS[i][1] === eventType) {
+        node.log('[Welcome] ' + KNOWN_EVENTS[i][2]);
+        return null;
     }
 }
 
-node.log('[Welcome] unknown event!');
+node.log('[Welcome] unknown event! (' + pushType + '|' + eventType + ')');
 
 return msg;
