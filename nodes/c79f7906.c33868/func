@@ -4,7 +4,6 @@ var homeId = flow.get('homeId');
 
 msg.url = url;
 msg.headers = { authorization: bearer };
-msg.home_id = homeId;
-msg.payload = { size: 0 };
+msg.payload = { home_id: homeId, size: 0 };
 
 return msg;

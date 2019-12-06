@@ -1,23 +1,41 @@
+const PULLED = 'NRPulled-';
 const KNOWN_EVENTS = [
-    ['topology_changed'     , undefined         , 'topology changed'    ],
-    ['webhook_activation'   , undefined         , 'webhook activated'   ],
-    ['NACamera-movement'    , 'movement'        , 'topology changed'    ],
-    ['NACamera-person'      , 'person'          , 'topology changed'    ],
-    ['NACamera-connection'  , 'connection'      , 'connected'           ],
-    ['NACamera-connection'  , 'disconnection'   , 'disconnected'        ]
+//pulled
+    [ 'NRPulled-movement'   , undefined         , 'motion reported'     ],
+    [ 'NRPulled-person'     , undefined         , 'person reported'     ],
+    [ 'NRPulled-animal'     , undefined         , 'animal reported'     ],
+    [ 'NRPulled-occupancy'  , undefined         , 'occupancy check'     ],
+//pushed
+    [ 'topology_changed'    , undefined         , 'topology changed'    ],
+    [ 'webhook_activation'  , undefined         , 'webhook activated'   ],
+    [ 'NACamera-movement'   , 'movement'        , 'motion detected'     ],
+    [ 'NACamera-person'     , 'person'          , 'person detected'     ],
+    [ 'NACamera-connection' , 'connection'      , 'camera connected'    ],
+    [ 'NACamera-connection' , 'disconnection'   , 'camera disconnected' ]
 ];
 
-var pushType = msg.payload.push_type;
-var eventType = msg.payload.event_type;
+var payload = msg.payload;
+var pushType = payload.push_type;
+var eventType = payload.event_type;
+var message = payload.message || '';
 
+var known = null;
+var unknown = msg;
 for(var i=0; i<KNOWN_EVENTS.length; i++) {
     if (KNOWN_EVENTS[i][0] === pushType &&
             KNOWN_EVENTS[i][1] === eventType) {
-        node.log('[Welcome] ' + KNOWN_EVENTS[i][2]);
-        return null;
+                
+        known = msg;
+        unknown = null;
+        
+        node.log('[Welcome] ' + KNOWN_EVENTS[i][2] + ' ' + message);
+        break;
     }
 }
 
-node.log('[Welcome] unknown event! (' + pushType + '|' + eventType + ')');
+if (unknown !== null) {
+    node.log('[Welcome] unknown event! (' +
+        pushType + '|' + eventType + ') ' + message);
+}
 
-return msg;
+return [ known, unknown ];

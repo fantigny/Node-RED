@@ -1,0 +1,7 @@
+const KIT_KAT = 'Kit-Kat';
+
+msg.payload = [ KIT_KAT ];
+
+node.log('[Welcome] ' + KIT_KAT + ' seen');
+    
+return msg;

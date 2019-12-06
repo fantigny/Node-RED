@@ -3,6 +3,6 @@ var bearer = 'Bearer ' + flow.get('access_token');
 
 msg.url = url;
 msg.headers = { authorization: bearer };
-msg.payload = { size: 0 };
+msg.payload = { size: size };
 
 return msg;

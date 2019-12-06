@@ -993,7 +993,9 @@
      "view-node-show-label": true,
      "view-show-tips": false
     }
-   }
+   },
+   "menu-deploymenu-item-node": true,
+   "menu-deploymenu-item-full": false
   },
   "noderedmailalert@gmail.com": {
    "editor": {
