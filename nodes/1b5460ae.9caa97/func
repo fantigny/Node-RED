@@ -1,37 +1,45 @@
-const NB_AVG_VALUES = 10;
+const SMOOTH_NB_VAL = 10;
 
-var smooth = function(name, value, nb_values, decimals) {
+var smooth = function(name, value, nbVal, dec) {
     var values = flow.get(name) || [];
     values.push(value);
     
     var total = 0;
-    var totalWeight = 0;
     for(var i=0, n=values.length; i<n; i++) {
-        if (i < nb_values) {
-            var weight = 1 / ( 1 + i/2 );
-            totalWeight += weight;
-            total += values[i] * weight;
+        if (i < nbVal) {
+            total += values[i];
         } else {
             values.shift();
         }
     }
     flow.set(name, values);
     
-    var avg = total / totalWeight;
-    avg *= Math.pow(10, decimals);
+    var avg = total / values.length;
+    avg *= Math.pow(10, dec);
     avg = Math.round(avg);
-    avg /= Math.pow(10, decimals);
+    avg /= Math.pow(10, dec);
     
     return avg;
 }
 
 var payload = msg.payload;
 
-payload.temperature = smooth('temps',
-    payload.temperature, NB_AVG_VALUES, 2);
-payload.humidity = smooth('hum',
-    payload.humidity, NB_AVG_VALUES, 4);
-payload.pressure = smooth('pres',
-    payload.pressure, NB_AVG_VALUES, 2);
+payload.temperature = smooth(
+    'temps',
+    payload.temperature,
+    SMOOTH_NB_VAL,
+    2);
+    
+payload.humidity = smooth(
+    'hum',
+    payload.humidity,
+    SMOOTH_NB_VAL,
+    4);
+    
+payload.pressure = smooth(
+    'pres',
+    payload.pressure,
+    SMOOTH_NB_VAL,
+    2);
 
 return msg;

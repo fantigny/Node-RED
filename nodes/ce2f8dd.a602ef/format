@@ -1,7 +1,7 @@
 <div id="background" style="
         height: 100%;
         width: 100%;
-        background: url('/home_temp.png');
+        background: url('/red/static/home_temp.png');
         background-repeat: no-repeat;
         background-size: 100% 100%;
         background-color: {{msg.payload.color}};">

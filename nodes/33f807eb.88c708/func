@@ -20,15 +20,15 @@ creds.scope = [
     'access_camera'
 ].join(' ');
 
-var refresh_token = flow.get('refresh_token');
-if (refresh_token === undefined) {
+var refreshToken = flow.get('refreshToken');
+if (refreshToken === undefined) {
     creds.grant_type = 'password';
     creds.username = global.get('USERNAME');
     creds.password = global.get('PASSWORD');
     node.log('[Netatmo] create token');
 } else {
     creds.grant_type = 'refresh_token';
-    creds.refresh_token = refresh_token;
+    creds.refresh_token = refreshToken;
     node.log('[Netatmo] refresh token');
 }
 

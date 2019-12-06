@@ -1,6 +1,6 @@
 <table width="100%" height="100%">
     <tr><td align="center" valign="middle">
-        <img src="/{{msg.payload.icon}}.png"
+        <img src="/red/static/{{msg.payload.icon}}.png"
             style="width: 32px;">
     </td></tr>
 </table>
