@@ -4,9 +4,6 @@ var webhook = global.get('WEBHOOK');
 
 msg.url = url;
 msg.headers = { authorization: bearer };
-msg.payload = {
-    url: webhook,
-    app_type: 'app_camera'
-};
+msg.payload = { url: webhook, app_type: 'app_camera' };
 
 return msg;

@@ -1,8 +1,12 @@
+if (msg.payload.init !== true) {
+//    return null;
+}
+
 var url = global.get('NETATMO_GET_HOMEDATA');
 var bearer = 'Bearer ' + flow.get('access_token');
 
 msg.url = url;
 msg.headers = { authorization: bearer };
-msg.payload = { size: size };
+msg.payload = { size: 20 };
 
 return msg;

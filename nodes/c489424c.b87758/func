@@ -1,6 +1,17 @@
+var payload = msg.payload;
+
+// we don't want to show outdated pulled events
+var time = payload.time || new Date().getTime();
+var lastTimeSeen = flow.get('lastTimeSeen') || 0;
+if (time <= lastTimeSeen) {
+    return null;
+}
+
+flow.set('lastTimeSeen', time);
+
 msg.payload = {
     idPseudos: null,
-    ids: msg.payload
+    ids: payload
 }
 
 return msg;

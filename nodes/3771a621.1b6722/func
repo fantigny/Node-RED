@@ -5,11 +5,16 @@ var events = msg.payload.body.events_list;
 flow.set('lastEventId', events[0].id);
 
 var msgs = [];
-for(var i=events.length-1; i>0; i--) {
+for(var i=1, n=events.length; i<n; i++) {
     var event = events[i];
     event.push_type = PULLED + event.type;
     event.event_type = event.sub_type;
     
+    var personId = event.person_id;
+    if (personId !== undefined) {
+        event.persons = [ { id: personId } ];
+    }
+
     msgs.push({ payload: event });
 }
 

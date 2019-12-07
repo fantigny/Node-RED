@@ -16,4 +16,8 @@ for(var i=0, n=persons.length; i<n; i++) {
 
 msg.payload = pseudos;
 
+node.log('[Welcome] ' +
+    (pseudos.length > 0? pseudos.join(', '): 'no one') +
+    ' at home');
+
 return msg;

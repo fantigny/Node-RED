@@ -1,2 +1,0 @@
-node.log('[Welcome] ' +
-    msg.payload.join(', ') + ' seen');

@@ -1,6 +1,0 @@
-var pseudos = msg.payload;
-if (pseudos.length === 0) {
-    pseudos.push('no one');
-}
-node.log('[Welcome] ' +
-    pseudos.join(', ') + ' at home');
