@@ -1,0 +1,25 @@
+const PULLED = 'NRPulled-';
+
+var events = msg.payload.body.events_list;
+
+// remove old event
+events.pop();
+
+if (events.length === 0) {
+    // no new event
+    return null;
+}
+
+// build a message for each new event
+var msgs = [];
+events.forEach(function(e, i) {
+    e.push_type = PULLED + e.type;
+    e.event_type = e.sub_type;
+    e.source = 'polling';
+    msgs.push({ payload: e });
+});
+
+// save latest event id for next poll
+flow.set('lastEventId', events[0].id);
+
+return [ msgs ];

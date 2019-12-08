@@ -1,9 +1,0 @@
-var url = global.get('NETATMO_DROP_WEBHOOK');
-var bearer = 'Bearer ' + flow.get('access_token');
-var webhook = global.get('WEBHOOK');
-
-msg.url = url;
-msg.headers = { authorization: bearer };
-msg.payload = { url: webhook, app_type: 'app_camera' };
-
-return msg;

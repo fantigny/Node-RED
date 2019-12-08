@@ -1,3 +1,0 @@
-msg.topic = '[Welcome] !! ERROR !! drop webhook';
-
-return msg;

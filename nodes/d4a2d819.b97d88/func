@@ -1,0 +1,5 @@
+var token = msg.responseCookies.netatmocomaccess_token.value;
+
+flow.set('access_token', token);
+
+return msg;

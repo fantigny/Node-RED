@@ -1,5 +1,0 @@
-var newMsg = {};
-newMsg.topic = '[Welcome] !! ERROR !!';
-newMsg.payload = msg;
-
-return newMsg;

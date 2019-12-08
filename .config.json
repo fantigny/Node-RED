@@ -992,10 +992,14 @@
      "view-node-status": true,
      "view-node-show-label": true,
      "view-show-tips": false
+    },
+    "context": {
+     "flowRefresh": false
     }
    },
-   "menu-deploymenu-item-node": true,
-   "menu-deploymenu-item-full": false
+   "menu-deploymenu-item-node": false,
+   "menu-deploymenu-item-full": false,
+   "menu-deploymenu-item-flow": true
   },
   "noderedmailalert@gmail.com": {
    "editor": {
