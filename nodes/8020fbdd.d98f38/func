@@ -1,1 +1,3 @@
+node.log('[Hue] motion');
+
 return msg;

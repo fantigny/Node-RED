@@ -29,17 +29,21 @@ payload.temperature = smooth(
     payload.temperature,
     SMOOTH_NB_VAL,
     2);
-    
 payload.humidity = smooth(
     'hum',
     payload.humidity,
     SMOOTH_NB_VAL,
     4);
-    
 payload.pressure = smooth(
     'pres',
     payload.pressure,
     SMOOTH_NB_VAL,
     2);
+
+node.log('[DarkSky] weather (' +
+    payload.summary + ', ' +
+    payload.pressure.toFixed(1) + 'mb, ' +
+    payload.temperature.toFixed(2) + '°C, ' +
+    (100 * payload.humidity).toFixed() + '% hum)');
 
 return msg;

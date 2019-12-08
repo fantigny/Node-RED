@@ -47,4 +47,6 @@ fahrenheit = Math.round(fahrenheit * 100) / 100;
 payload.celsius = celsius;
 payload.fahrenheit = fahrenheit;
 
+node.log('[Hue] temp (' + payload.celsius + '°C)');
+
 return msg;

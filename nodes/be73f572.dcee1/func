@@ -1,5 +1,0 @@
-node.log('[DarkSky] weather (' +
-    msg.payload.summary + ', ' +
-    msg.payload.pressure.toFixed(1) + 'mb, ' +
-    msg.payload.temperature.toFixed(2) + '°C, ' +
-    (100 * msg.payload.humidity).toFixed() + '% hum)');

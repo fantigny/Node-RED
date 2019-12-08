@@ -1,61 +1,50 @@
-const PULLED = 'NRPulled-';
-const KNOWN_EVENTS = [
-//poll
-    [ 'polling_started'        , undefined       , 'polling started'     ],
-    [ 'NRPulled-movement'      , undefined       , 'motion detected'     ],
-    [ 'NRPulled-person'        , undefined       , 'person detected'     ],
-    [ 'NRPulled-boot'          , undefined       , 'camera started'      ],
-    [ 'NRPulled-on'            , undefined       , 'camera on'           ],
-    [ 'NRPulled-off'           , undefined       , 'camera off'          ],
-    [ 'NRPulled-connection'    , undefined       , 'camera connected'    ],
-    [ 'NRPulled-disconnection' , undefined       , 'camera disconnected' ],
-//socket
-    [ 'websocket_activation'   , undefined       , 'websocket connected' ],
-    [ 'NACamera-silent'        , 'silent'        , 'occupancy change'    ],
-    [ 'NACamera-end_recording' , 'end_recording' , 'end recording'       ],
-//hook
-    [ 'webhook_activation'     , undefined       , 'webhook activated'   ],
-    [ 'topology_changed'       , undefined       , 'topology changed'    ],
-    [ 'NACamera-movement'      , 'movement'      , 'motion detected'     ],
-    [ 'NACamera-person'        , 'person'        , 'person detected'     ],
-    [ 'NACamera-on'            , 'on'            , 'camera on'           ],
-    [ 'NACamera-off'           , 'off'           , 'camera off'          ],
-    [ 'NACamera-connection'    , 'connection'    , 'camera connected'    ],
-    [ 'NACamera-connection'    , 'disconnection' , 'camera disconnected' ]
+const EVENTS = [
+// hook
+    [ 'webhook_activation'      , undefined        , 'webhook activated'   ],
+    [ 'topology_changed'        , undefined        , 'topology changed'    ],
+    [ 'NACamera-movement'       , 'movement'       , 'motion detected'     ],
+    [ 'NACamera-person'         , 'person'         , 'person detected'     ],
+    [ 'NACamera-on'             , 'on'             , 'camera on'           ],
+    [ 'NACamera-off'            , 'off'            , 'camera off'          ],
+    [ 'NACamera-connection'     , 'connection'     , 'camera connected'    ],
+    [ 'NACamera-connection'     , 'disconnection'  , 'camera disconnected' ],
+// poll  
+    [ 'polling_started'         , undefined        , 'polling started'     ],
+    [ 'NRPulled-movement'       , undefined        , 'motion detected'     ],
+    [ 'NRPulled-person'         , undefined        , 'person detected'     ],
+    [ 'NRPulled-boot'           , undefined        , 'camera started'      ],
+    [ 'NRPulled-on'             , undefined        , 'camera on'           ],
+    [ 'NRPulled-off'            , undefined        , 'camera off'          ],
+    [ 'NRPulled-connection'     , undefined        , 'camera connected'    ],
+    [ 'NRPulled-disconnection'  , undefined        , 'camera disconnected' ],
+// socket
+    [ 'websocket_activation'    , undefined        , 'websocket connected' ],
+    [ 'NACamera-silent'         , 'silent'         , 'occupancy change'    ],
+    [ 'NACamera-cloud'          , 'cloud'          , 'cloud event'         ],
+    [ 'NACamera-model_improved' , 'model_improved' , 'model improved'      ],
+    [ 'NACamera-end_recording'  , 'end_recording'  , 'end recording'       ]
 ];
+
+var getLogMsg = function(m, l) {
+    return m.toLowerCase().includes(l)? m: m.length > 0? m + ' (' + l + ')': l;
+}
 
 var payload = msg.payload;
 var source = payload.source;
 var pushType = payload.push_type;
 var eventType = payload.event_type;
+var message = (payload.message || '').replace(/<[^>]*>/g, '');
 
-// clean message from html tags
-var message = payload.message || '';
-if (message.length > 0) {
-    message = message.replace(/<[^>]*>/g, '');
-}
-
-// check event type
-var known = null;
 var unknown = msg;
-for(var i=0; i<KNOWN_EVENTS.length; i++) {
-    if (KNOWN_EVENTS[i][0] !== pushType ||
-            KNOWN_EVENTS[i][1] !== eventType) {
-        continue;
+var known = null;
+for(var i=0, n=EVENTS.length; i<n; i++) {
+    if (pushType === EVENTS[i][0] && eventType === EVENTS[i][1]) {
+        unknown = null;
+        known = msg;
+        
+        node.log('[Welcome-' + source + '] ' + getLogMsg(message, EVENTS[i][2]));
+        break;
     }
-                
-    known = msg;
-    unknown = null;
-    
-    var log = KNOWN_EVENTS[i][2];
-    if (message.toLowerCase().includes(log)) {
-        log = '';
-    } else if (message.length > 0) {
-        log = ' (' + log + ')';
-    }
-    node.log('[Welcome-' + source + '] ' + message + log);
-    
-    break;
 }
 
-return [ known, unknown ];
+return [ unknown, known ];

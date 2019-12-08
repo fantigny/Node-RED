@@ -1,2 +1,0 @@
-node.log('[Hue] light (' +
-    msg.payload.lux + ' lux)');
