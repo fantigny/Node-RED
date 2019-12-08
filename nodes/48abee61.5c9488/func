@@ -1,22 +1,26 @@
-var cookie = '';
+const USER_AGENT = 'Node-RED';
+const CONTENT_TYPE = 'application/x-www-form-urlencoded';
+const BLAH_BLAH = 'blah blah blah...';
+
+var cookies = '';
 for(const k in msg.responseCookies) {
-    if (cookie.length > 0) {
-        cookie += ',';
+    if (cookies.length > 0) {
+        cookies += ',';
     }
-    cookie += k + '=' + msg.responseCookies[k].value;
+    cookies += k + '=' + msg.responseCookies[k].value;
 }
 
-msg.url = 'https://auth.netatmo.com/access/postlogin';
-msg.headers = {};
-msg.headers['Cookie'] = cookie;
-msg.headers['User-Agent'] = 'Node-RED';
-msg.headers['Content-Type'] = "application/x-www-form-urlencoded";
-
+msg.url = global.get('NETATMO_POST_LOGIN');
+msg.headers = {
+    'Cookie'        : cookies,
+    'User-Agent'    : USER_AGENT,
+    'Content-Type'  : CONTENT_TYPE
+};
 msg.payload = {
-    _token: 'blah blah blah...',
-    email: global.get('USERNAME'),
-    password: global.get('PASSWORD'),
-    stay_logged: true
+    _token      : BLAH_BLAH,
+    email       : global.get('USERNAME'),
+    password    : global.get('PASSWORD'),
+    stay_logged : true
 };
 
 return msg;

@@ -1,22 +1,20 @@
-var now = new Date().getTime();
-var time = context.get('previousTime') || 0;
+const MINIMUM_TIME = 10; //seconds between 2 messages
 
 var payload = msg.payload;
-var previous = context.get('previousPayload') || {};
+var now = Math.round( new Date().getTime() / 1000 );
 
-context.set('previousTime', now);
-context.set('previousPayload', payload);
+var previousPayload = flow.get('previousPayload') || {};
+var previousTime = flow.get('previousTime') || 0;
 
-if (now - time > 5) {
-    return msg;
-}
+flow.set('previousPayload', payload);
+flow.set('previousTime', now);
 
-if (Object.keys(previous).length !== Object.keys(payload).length) {
+if (now - previousTime > MINIMUM_TIME) {
     return msg;
 }
 
 for(const k in payload) {
-    if (payload[k] !== previous[k]) {
+    if (payload[k] !== previousPayload[k]) {
         return msg;
     }
 }

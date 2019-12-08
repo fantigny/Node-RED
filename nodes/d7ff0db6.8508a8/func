@@ -5,7 +5,7 @@ if (on === undefined) {
 
 msg.payload = { on: on };
 
-node.log('[Corridor] motion timer turned ' +
+node.log('[Stairs] motion timer turned ' +
     (on === true? 'on': 'off'));
 
 return msg;

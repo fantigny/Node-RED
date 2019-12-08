@@ -1,12 +1,17 @@
-var payload;
-if (msg.payload.status === 'ok') {
-    payload = { push_type: 'websocket_activation' };
-} else {
-    payload = msg.payload.extra_params;
-    payload.push_type = msg.payload.push_type;
-}
-payload.source = 'websocket';
+var payload = msg.payload;
 
-msg.payload = payload;
+var event;
+var extra_params = payload.extra_params;
+if (extra_params !== undefined) {
+    event = extra_params;
+    event.push_type = payload.push_type;
+} else if (payload.status === 'ok') {
+    event = { push_type: 'websocket_activation' };
+} else {
+    event = payload;
+}
+event.source = 'wsocket';
+
+msg.payload = event;
 
 return msg;

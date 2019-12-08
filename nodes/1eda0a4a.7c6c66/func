@@ -8,7 +8,7 @@ eventMsg.payload = 'start';
 var timerMsgs = [];
 if (flow.get('timerOn') === true) {
     timerMsgs.push({ reset: true });
-    node.log('[Corridor] timer reset')
+    node.log('[Stairs] timer reset')
 } else {
     flow.set('timerOn', true);
 }
@@ -18,7 +18,7 @@ timerMsgs.push({
     payload: { on: false }
 });
 
-node.log('[Corridor] turn off in ' +
-    TIMER + ' min (timer)')
+//node.log('[Stairs] turn off in ' +
+//    TIMER + ' min (timer)')
 
 return [ timerMsgs, eventMsg ];

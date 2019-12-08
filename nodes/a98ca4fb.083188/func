@@ -11,7 +11,7 @@ if (flow.get('anyOn') === false) {
     onMsg = msg;
     // start timer after delay
     timerMsg = { delay: DELAY };
-    node.log('[Corridor] delay timer (' +
+    node.log('[Stairs] delay timer (' +
         DELAY/1000 + 's)');
 } else {
     // reset timer imediatly

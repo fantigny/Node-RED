@@ -10,6 +10,6 @@ if (anyOn) {
 
 flow.set('timerOn', false);
 
-node.log('[Corridor] timer stopped')
+node.log('[Stairs] timer stopped')
 
 return [ { payload: 'stop' }, { reset: true} ];

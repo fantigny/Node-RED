@@ -1,5 +1,5 @@
 msg.payload = { on: true };
 
-node.log('[Corridor] turn on (timer)');
+node.log('[Stairs] turn on (timer)');
 
 return msg;

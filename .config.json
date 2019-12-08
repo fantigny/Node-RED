@@ -999,7 +999,8 @@
    },
    "menu-deploymenu-item-node": false,
    "menu-deploymenu-item-full": false,
-   "menu-deploymenu-item-flow": true
+   "menu-deploymenu-item-flow": true,
+   "menu-menu-item-sidebar": true
   },
   "noderedmailalert@gmail.com": {
    "editor": {
