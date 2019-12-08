@@ -16,10 +16,14 @@ events.forEach(function(e, i) {
     e.push_type = PULLED + e.type;
     e.event_type = e.sub_type;
     e.source = 'polling';
+    if (e.person_id !== undefined) {
+        e.persons = [ { id: e.person_id } ];
+    }
+
     msgs.push({ payload: e });
 });
 
 // save latest event id for next poll
-flow.set('lastEventId', events[0].id);
+flow.set('eventId', events[0].id);
 
 return [ msgs ];

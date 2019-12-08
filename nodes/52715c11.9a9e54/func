@@ -1,2 +1,24 @@
+var now = new Date().getTime();
+var time = context.get('previousTime') || 0;
 
-return msg;
+var payload = msg.payload;
+var previous = context.get('previousPayload') || {};
+
+context.set('previousTime', now);
+context.set('previousPayload', payload);
+
+if (now - time > 5) {
+    return msg;
+}
+
+if (Object.keys(previous).length !== Object.keys(payload).length) {
+    return msg;
+}
+
+for(const k in payload) {
+    if (payload[k] !== previous[k]) {
+        return msg;
+    }
+}
+
+return null;

@@ -1,39 +1,22 @@
-var html = msg.payload;
+var cookie = '';
+for(const k in msg.responseCookies) {
+    if (cookie.length > 0) {
+        cookie += ',';
+    }
+    cookie += k + '=' + msg.responseCookies[k].value;
+}
 
-var i = html.indexOf('name="_token"');
-var _token = html.substring(i+21, i+100);
-_token = _token.substring(0, _token.indexOf('"'));
-
+msg.url = 'https://auth.netatmo.com/access/postlogin';
 msg.headers = {};
-msg.headers['Cookie'] = 'netatmocomaccess_token=59ac02e62b2b46aff38b5e28%7Ce8ede2785c3cb183a4c02ebb2520205e; netatmocomci_csrf_cookie_na=107b360e91f05daf51cea34270fa0a4d';
-msg.headers['content-type'] = 'multipart/form-data; boundary=----WebKitFormBoundary7MA4YWxkTrZu0gW';
-msg.headers['User-Agent'] = 'PostmanRuntime/7.20.1';
-msg.headers['Accept'] = '*/*';
-msg.headers['Cache-Control'] = 'no-cache';
-msg.headers['Postman-Token'] = '290e10c8-4f06-42ff-a443-4525098dc89b,f4db1c06-0401-48df-b059-9099d40b3fdf';
-msg.headers['Accept-Encoding'] = 'gzip, deflate';
-msg.headers['Referer'] = 'applicati';
-msg.headers['Connection'] = 'keep-alive';
-msg.headers['content'] = 'applicati';
-msg.headers['content'] = 'applicati';
-msg.headers['content'] = 'applicati';
-msg.headers['content'] = 'applicati';
+msg.headers['Cookie'] = cookie;
+msg.headers['User-Agent'] = 'Node-RED';
+msg.headers['Content-Type'] = "application/x-www-form-urlencoded";
 
-msg.payload = "------WebKitFormBoundary7MA4YWxkTrZu0gW\r\nContent-Disposition: form-data; name=\"email\"\r\n\r\nfrederic.antigny@gmail.com\r\n------WebKitFormBoundary7MA4YWxkTrZu0gW\r\nContent-Disposition: form-data; name=\"password\"\r\n\r\nfAnO-1718\r\n------WebKitFormBoundary7MA4YWxkTrZu0gW\r\nContent-Disposition: form-data; name=\"_token\"\r\n\r\n" +
-    _token +
-    "\r\n------WebKitFormBoundary7MA4YWxkTrZu0gW\r\nContent-Disposition: form-data; name=\"stay_logged\"\r\n\r\ntrue\r\n------WebKitFormBoundary7MA4YWxkTrZu0gW--";
-
-/*
-msg.headers = {};
-msg.headers['Cookie'] = 'netatmocomaccess_token=59ac02e62b2b46aff38b5e28%7Ce8ede2785c3cb183a4c02ebb2520205e; netatmocomci_csrf_cookie_na=107b360e91f05daf51cea34270fa0a4d';
-msg.headers['content-type'] = 'application/x-www-form-urlencoded';
- 
 msg.payload = {
-    email: "frederic.antigny@gmail.com",
-    password: "fAnO-1718",
-    _token: _token,
+    _token: 'blah blah blah...',
+    email: global.get('USERNAME'),
+    password: global.get('PASSWORD'),
     stay_logged: true
 };
-*/
 
 return msg;

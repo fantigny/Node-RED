@@ -1,17 +1,14 @@
 const LATITUDE = 51.508;
 const LONGITUDE = -0.239;
-const BASE_URL = 'https://api.darksky.net/forecast/';
-const KEY = '7c4f4781e80f09e9f4dc745c01160d92';
+const API_URL = global.get('DARKSKY_API_URL') + '/';
+const API_KEY = global.get('DARKSKY_API_KEY') + '/';
 const CONFIG = '?units=si&exclude=minutely,hourly,daily,alerts,flags';
 
-var timestamp = msg.payload;
-timestamp = Math.round(timestamp/1000);
+var time = Math.round( msg.payload / 1000 );
 
-var params = KEY + '/' +
-    LATITUDE + ',' +
-    LONGITUDE + ',' +
-    timestamp;
-
-msg.url = BASE_URL + params + CONFIG;
+msg.url =
+    API_URL + API_KEY +
+    LATITUDE + ',' + LONGITUDE + ',' + time +
+    CONFIG;
 
 return msg;

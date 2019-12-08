@@ -1,6 +1,7 @@
 const PULLED = 'NRPulled-';
 const KNOWN_EVENTS = [
 //poll
+    [ 'polling_started'        , undefined       , 'polling started'     ],
     [ 'NRPulled-movement'      , undefined       , 'motion detected'     ],
     [ 'NRPulled-person'        , undefined       , 'person detected'     ],
     [ 'NRPulled-boot'          , undefined       , 'camera started'      ],
@@ -10,6 +11,7 @@ const KNOWN_EVENTS = [
     [ 'NRPulled-disconnection' , undefined       , 'camera disconnected' ],
 //socket
     [ 'websocket_activation'   , undefined       , 'websocket connected' ],
+    [ 'NACamera-silent'        , 'silent'        , 'occupancy change'    ],
     [ 'NACamera-end_recording' , 'end_recording' , 'end recording'       ],
 //hook
     [ 'webhook_activation'     , undefined       , 'webhook activated'   ],
@@ -23,7 +25,7 @@ const KNOWN_EVENTS = [
 ];
 
 var payload = msg.payload;
-var source = payload.source || 'webhook';
+var source = payload.source;
 var pushType = payload.push_type;
 var eventType = payload.event_type;
 
@@ -37,34 +39,23 @@ if (message.length > 0) {
 var known = null;
 var unknown = msg;
 for(var i=0; i<KNOWN_EVENTS.length; i++) {
-    if (KNOWN_EVENTS[i][0] === pushType &&
-            KNOWN_EVENTS[i][1] === eventType) {
+    if (KNOWN_EVENTS[i][0] !== pushType ||
+            KNOWN_EVENTS[i][1] !== eventType) {
+        continue;
+    }
                 
-        known = msg;
-        unknown = null;
-        
-        var log = KNOWN_EVENTS[i][2];
-        if (message.toLowerCase().includes(log)) {
-            // don't repeat message if same as log
-            log = '';
-        } else if (message.length > 0) {
-            log = ' (' + log + ')';
-        }
-        node.log('[Welcome-' + source + '] ' + message + log);
-        break;
+    known = msg;
+    unknown = null;
+    
+    var log = KNOWN_EVENTS[i][2];
+    if (message.toLowerCase().includes(log)) {
+        log = '';
+    } else if (message.length > 0) {
+        log = ' (' + log + ')';
     }
-}
-
-// clean duplicates
-if (pushType === 'NRPulled-person') {
-}
-
-// prepare person ids
-if (pushType === 'NACamera-movement' && eventType) {
-    var personId = payload.person_id;
-    if (personId !== undefined) {
-        payload.persons = [ { id: personId } ];
-    }
+    node.log('[Welcome-' + source + '] ' + message + log);
+    
+    break;
 }
 
 return [ known, unknown ];

@@ -1,7 +1,6 @@
 var payload;
 if (msg.payload.status === 'ok') {
-    payload = {};
-    payload.push_type = 'websocket_activation';
+    payload = { push_type: 'websocket_activation' };
 } else {
     payload = msg.payload.extra_params;
     payload.push_type = msg.payload.push_type;
