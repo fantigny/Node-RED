@@ -5,8 +5,6 @@ var extra_params = payload.extra_params;
 if (extra_params !== undefined) {
     event = extra_params;
     event.push_type = payload.push_type;
-} else if (payload.status === 'ok') {
-    event = { push_type: 'websocket_activation' };
 } else {
     event = payload;
 }

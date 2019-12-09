@@ -1,4 +1,5 @@
-const EVENTS = [
+const KNOWN_EVENTS = [
+//     push_type                  event_type         comment
 // hook
     [ 'webhook_activation'      , undefined        , 'webhook activated'   ],
     [ 'topology_changed'        , undefined        , 'topology changed'    ],
@@ -9,7 +10,7 @@ const EVENTS = [
     [ 'NACamera-connection'     , 'connection'     , 'camera connected'    ],
     [ 'NACamera-connection'     , 'disconnection'  , 'camera disconnected' ],
 // poll  
-    [ 'polling_started'         , undefined        , 'polling started'     ],
+    [ 'polling_start'           , undefined        , 'polling started'     ],
     [ 'NRPulled-movement'       , undefined        , 'motion detected'     ],
     [ 'NRPulled-person'         , undefined        , 'person detected'     ],
     [ 'NRPulled-boot'           , undefined        , 'camera started'      ],
@@ -18,15 +19,16 @@ const EVENTS = [
     [ 'NRPulled-connection'     , undefined        , 'camera connected'    ],
     [ 'NRPulled-disconnection'  , undefined        , 'camera disconnected' ],
 // socket
-    [ 'websocket_activation'    , undefined        , 'websocket connected' ],
+    [ 'websocket_connection'    , undefined        , 'websocket connected' ],
     [ 'NACamera-silent'         , 'silent'         , 'occupancy change'    ],
     [ 'NACamera-cloud'          , 'cloud'          , 'cloud event'         ],
     [ 'NACamera-model_improved' , 'model_improved' , 'model improved'      ],
     [ 'NACamera-end_recording'  , 'end_recording'  , 'end recording'       ]
 ];
 
-var getLogMsg = function(m, l) {
-    return m.toLowerCase().includes(l)? m: m.length > 0? m + ' (' + l + ')': l;
+var getLog = function(m, c) {
+    // If m includes c return m, else if m is not empty return m (c), else return: c.
+    return m.toLowerCase().includes(c)? m: m.length > 0? m + ' (' + c + ')': c;
 }
 
 var payload = msg.payload;
@@ -37,12 +39,14 @@ var message = (payload.message || '').replace(/<[^>]*>/g, '');
 
 var unknown = msg;
 var known = null;
-for(var i=0, n=EVENTS.length; i<n; i++) {
-    if (pushType === EVENTS[i][0] && eventType === EVENTS[i][1]) {
+for(var i=0, n=KNOWN_EVENTS.length; i<n; i++) {
+    var ref = KNOWN_EVENTS[i];
+    if (pushType === ref[0] && eventType === ref[1]) {
         unknown = null;
         known = msg;
         
-        node.log('[Welcome-' + source + '] ' + getLogMsg(message, EVENTS[i][2]));
+        var comment = ref[2];
+        node.log('[Welcome-' + source + '] ' + getLog(message, comment));
         break;
     }
 }

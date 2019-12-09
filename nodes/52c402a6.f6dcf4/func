@@ -24,6 +24,6 @@ events.forEach(function(e, i) {
 });
 
 // save latest event id for next poll
-flow.set('eventId', events[0].id);
+flow.set('lastEventId', events[0].id);
 
 return [ msgs ];

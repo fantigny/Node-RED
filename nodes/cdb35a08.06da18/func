@@ -1,8 +1,0 @@
-var home = msg.payload.body.homes[0];
-var event = home.events[home.events.length-1];
-
-flow.set('eventId', event.id);
-
-msg.payload = { push_type: 'polling_started', source: "polling" };
-
-return msg;

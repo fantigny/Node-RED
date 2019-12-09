@@ -1,4 +1,4 @@
-const UNKNOWN = 'Unknown face';
+const UNKNOWN = 'Unknown';
 
 var payload =  msg.payload;
 

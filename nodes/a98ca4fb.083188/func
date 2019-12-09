@@ -1,4 +1,4 @@
-const DELAY = 2000;// milliseconds
+const DELAY = 2; //seconds
 
 if (flow.get('enabled') === false) {
     return [ null, null ];
@@ -10,11 +10,10 @@ if (flow.get('anyOn') === false) {
     // turn on
     onMsg = msg;
     // start timer after delay
-    timerMsg = { delay: DELAY };
-    node.log('[Stairs] delay timer (' +
-        DELAY/1000 + 's)');
+    timerMsg = { delay: DELAY * 1000};
+    node.log('[Stairs] delay timer (' + DELAY + 's)');
 } else {
-    // reset timer imediatly
+    // reset timer
     timerMsg = { delay: 0 };
 }
 

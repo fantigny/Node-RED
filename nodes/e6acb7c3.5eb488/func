@@ -1,9 +1,9 @@
 var idPseudos = {};
-var persons = msg.payload.body.homes[0].persons;
-for(var i=0, n=persons.length; i<n; i++) {
-    var pseudo = persons[i].pseudo;
+var people = msg.payload.body.homes[0].persons;
+for(var i=0, n=people.length; i<n; i++) {
+    var pseudo = people[i].pseudo;
     if (pseudo !== undefined) {
-        var id = persons[i].id;
+        var id = people[i].id;
         idPseudos[id] = pseudo;
     }
 }

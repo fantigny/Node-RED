@@ -1,4 +1,4 @@
-node.log('[Fred\'s] ' +
+node.log('[Fred] ' +
     msg.payload.name +
     ': ' +
     msg.payload.action +

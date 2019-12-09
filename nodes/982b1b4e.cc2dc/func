@@ -1,30 +1,25 @@
-const scenes = [
-    'FR Bright'
-];
+var room = env.get('room');
+var scenes = env.get('scenes');
+var roomScene = room + '-scene';
+var roomCount = room + '-count';
 
-var count = context.get('count');
-if (count === undefined) {
+var count = flow.get(roomCount);
+count = count === undefined? 0: count;
+
+var anyOn = flow.get('$parent.anyOn');
+var scene = flow.get(roomScene);
+if (anyOn === true &&
+        scenes.includes(scene) &&
+        ++count > scenes.length-1) {
     count = 0;
-}
-
-var scene = flow.get('scene');
-if (flow.get('anyOn') === true) {
-    for(var i=0; i<scenes.length; i++) {
-        if (scenes[i] === scene) {
-            if (++count >= scenes.length) {
-                count = 0;
-            }
-            break;
-        }
-    }
 }
 scene = scenes[count];
 
-flow.set('scene', scene);
-context.set('count', count);
+flow.set(roomScene, scene);
+flow.set(roomCount, count);
 
 msg.payload = scene;
 
-node.log('[Fred\'s] set scene ' + scene);
+node.log('[' + room + '] set scene ' + scene);
 
 return msg;

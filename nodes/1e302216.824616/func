@@ -6,5 +6,5 @@ for(var name in lightsOn) {
     anyOn = anyOn || lightsOn[name];
 }
 
-flow.set('anyOn', anyOn);
 flow.set('lightsOn', lightsOn);
+flow.set('anyOn', anyOn);

@@ -18,10 +18,11 @@ if (flow.get('anyOn') === true) {
         }
     }
 }
-
 scene = scenes[count];
+
 context.set('count', count);
 flow.set('scene', scene);
+
 msg.payload = scene;
 
 node.log('[Ground floor] set scene ' + scene);

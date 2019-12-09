@@ -18,7 +18,7 @@ if (lightsOn['Ceiling'] === true) {
     msgs[2] = message;
 }
 
-node.log('[Fred\'s] changing brightness (' +
+node.log('[Fred] changing brightness (' +
     step + ')');
 
 return msgs;
