@@ -1,25 +1,24 @@
-var room = env.get('room');
-var scenes = env.get('scenes');
-var roomScene = room.replace(/[^a-zA-Z]/g, "") + '-scene';
-var roomCount = room.replace(/[^a-zA-Z]/g, "") + '-count';
-
-var count = flow.get(roomCount);
-count = count === undefined? 0: count;
+const ROOM = env.get('roomName');
+const SCENES = env.get('scenes');
+const NB_SCENES = SCENES.length-1;
 
 var anyOn = flow.get('$parent.anyOn');
-var scene = flow.get(roomScene);
-if (anyOn === true &&
-        scenes.includes(scene) &&
-        ++count > scenes.length-1) {
-    count = 0;
-}
-scene = scenes[count];
+var scene = flow.get('$parent.scene');
 
-flow.set(roomScene, scene);
-flow.set(roomCount, count);
+var count = flow.get('count');
+count = count === undefined? 0: count;
+
+if (anyOn === true && SCENES.includes(scene)) {
+    count++;
+    count %= NB_SCENES;
+}
+scene = SCENES[count];
+
+flow.set('$parent.scene', scene);
+flow.set('count', count);
 
 msg.payload = scene;
 
-node.log('[' + room + '] set scene ' + scene);
+node.log('[' + ROOM + '] set scene ' + scene);
 
 return msg;
