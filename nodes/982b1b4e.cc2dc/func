@@ -1,7 +1,7 @@
 var room = env.get('room');
 var scenes = env.get('scenes');
-var roomScene = room + '-scene';
-var roomCount = room + '-count';
+var roomScene = room.replace(/[^a-zA-Z]/g, "") + '-scene';
+var roomCount = room.replace(/[^a-zA-Z]/g, "") + '-count';
 
 var count = flow.get(roomCount);
 count = count === undefined? 0: count;

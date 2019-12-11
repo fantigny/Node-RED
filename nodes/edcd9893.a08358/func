@@ -20,6 +20,8 @@ const KNOWN_EVENTS = [
     [ 'NRPulled-disconnection'  , undefined        , 'camera disconnected' ],
 // socket
     [ 'websocket_connection'    , undefined        , 'websocket connected' ],
+    [ 'connection'              , 'connection'     , 'camera connected'    ],
+    [ 'disconnection'           , 'disconnection'  , 'camera disconnected' ],
     [ 'NACamera-silent'         , 'silent'         , 'occupancy change'    ],
     [ 'NACamera-cloud'          , 'cloud'          , 'cloud event'         ],
     [ 'NACamera-model_improved' , 'model_improved' , 'model improved'      ],

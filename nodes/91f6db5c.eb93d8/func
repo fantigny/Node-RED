@@ -1,6 +1,7 @@
 var body = msg.payload;
 
 msg.to = global.get('ADMIN_EMAIL');
+msg.topic = env.get('topic');
 msg.body = body;
 
 node.log('[Gmail] ' + msg.topic + ' ' + body);
