@@ -1000,7 +1000,7 @@
    "menu-deploymenu-item-node": false,
    "menu-deploymenu-item-full": false,
    "menu-deploymenu-item-flow": true,
-   "menu-menu-item-sidebar": true
+   "menu-menu-item-sidebar": false
   },
   "noderedmailalert@gmail.com": {
    "editor": {
@@ -1024,7 +1024,8 @@
      "view-node-show-label": true,
      "view-show-tips": true
     }
-   }
+   },
+   "menu-menu-item-sidebar": true
   }
  }
 }

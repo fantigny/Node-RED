@@ -1,8 +1,9 @@
-var on = flow.get('enabled') === false;
+// toggle tvOn
+var tvOn = flow.get('tvOn');
+tvOn = tvOn === undefined? true: !tvOn;
+flow.set('tvOn', tvOn);
 
-msg.payload = { on: on };
-
-node.log('[Stairs] motion timer turned ' +
-    (on === true? 'on': 'off'));
+// switch on/off entrance
+msg.payload = { on: !tvOn };
 
 return msg;

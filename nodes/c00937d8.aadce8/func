@@ -1,5 +1,8 @@
-msg.payload = { on: true };
+const ON = { payload: { on: true } };
+
+var tvOn = flow.get('tvOn');
+var msgEntrance = tvOn === true? null: ON;
 
 node.log('[Stairs] turn on (timer)');
 
-return msg;
+return [ msgEntrance, ON ];

@@ -1,18 +1,21 @@
 const ROOM = env.get('roomName');
 const SCENES = env.get('scenes');
-const NB_SCENES = SCENES.length-1;
+const NB_SCENES = SCENES.length;
 
 var anyOn = flow.get('$parent.anyOn');
 var scene = flow.get('$parent.scene');
-
 var count = flow.get('count');
-count = count === undefined? 0: count;
+count = count === undefined || isNaN(count)? 0: count;
 
+// only if already on and in this cycle
 if (anyOn === true && SCENES.includes(scene)) {
     count++;
     count %= NB_SCENES;
 }
 scene = SCENES[count];
+node.log(count);
+node.log(SCENES);
+node.log(scene);
 
 flow.set('$parent.scene', scene);
 flow.set('count', count);
