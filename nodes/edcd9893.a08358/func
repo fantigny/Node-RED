@@ -20,16 +20,16 @@ const KNOWN_EVENTS = [
     [ 'NRPulled-disconnection'  , undefined        , 'camera disconnected' ],
 // socket
     [ 'websocket_connection'    , undefined        , 'websocket connected' ],
+    [ 'NACamera-silent'         , 'silent'         , 'occupancy change'    ],
+    [ 'NACamera-end_recording'  , 'end_recording'  , 'end recording'       ],
     [ 'connection'              , 'connection'     , 'camera connected'    ],
     [ 'disconnection'           , 'disconnection'  , 'camera disconnected' ],
-    [ 'NACamera-silent'         , 'silent'         , 'occupancy change'    ],
     [ 'NACamera-cloud'          , 'cloud'          , 'cloud event'         ],
-    [ 'NACamera-model_improved' , 'model_improved' , 'model improved'      ],
-    [ 'NACamera-end_recording'  , 'end_recording'  , 'end recording'       ]
+    [ 'NACamera-model_improved' , 'model_improved' , 'model improved'      ]
 ];
 
 var getLog = function(m, c) {
-    // If m includes c return m, else if m is not empty return m (c), else return: c.
+    // If m contains c return m, else if m is not empty return m (c), else return: c.
     return m.toLowerCase().includes(c)? m: m.length > 0? m + ' (' + c + ')': c;
 }
 
@@ -37,7 +37,7 @@ var payload = msg.payload;
 var source = payload.source;
 var pushType = payload.push_type;
 var eventType = payload.event_type;
-var message = (payload.message || '').replace(/<[^>]*>/g, '');
+var message = (payload.message || '').replace(/<>/g, '');
 
 var unknown = msg;
 var known = null;

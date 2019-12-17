@@ -13,9 +13,6 @@ if (anyOn === true && SCENES.includes(scene)) {
     count %= NB_SCENES;
 }
 scene = SCENES[count];
-node.log(count);
-node.log(SCENES);
-node.log(scene);
 
 flow.set('$parent.scene', scene);
 flow.set('count', count);
