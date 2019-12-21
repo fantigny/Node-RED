@@ -1,13 +1,12 @@
-if (flow.get('timerOn') === false) {
-    return;
-}
-
 var anyOn = msg.payload.on || msg.payload.anyOn;
 flow.set('anyOn', anyOn);
 if (anyOn) {
     return;
 }
 
+if (flow.get('timerOn') === false) {
+    return;
+}
 flow.set('timerOn', false);
 
 node.log('[Stairs] timer stopped')
