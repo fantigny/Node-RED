@@ -8,6 +8,8 @@ with
 
 Source split by [node-red-contrib-git-nodes](https://flows.nodered.org/node/node-red-contrib-git-nodes)
 
+Source is also available from [Node-RED ide](https://speederpan.com/red)
+
 # Home UI
 ![Home UI](rsc/img/home_ui.PNG?raw=true "Home UI")
 
@@ -16,15 +18,6 @@ Source split by [node-red-contrib-git-nodes](https://flows.nodered.org/node/node
 
 # Server Report
 ![Server report](rsc/img/server_ui.PNG?raw=true "WineBox UI")
-
-# Welcome sensor flow
-![Welcome sensor flow](rsc/img/welcome_flow.PNG?raw=true "Welcome sensor flow")
-
-# Home UI Flow
-![Home Flow](rsc/img/home_flow.PNG?raw=true "Home Flow")
-
-# Stairs flow
-![Stairs Flow](rsc/img/stairs_flow.PNG?raw=true "Stairs Flow")
 
 # Logs
 ![Logs](rsc/img/log.PNG?raw=true "Logs")
